@@ -1001,7 +1001,7 @@ var HelloMessage = function (_React$Component) {
     return HelloMessage;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(HelloMessage, { name: 'Manpreet' }), mountNode);
+_reactDom2.default.render(_react2.default.createElement(HelloMessage, { name: 'Manpreet' }), document.getElementById("app"));
 
 /***/ }),
 /* 16 */
