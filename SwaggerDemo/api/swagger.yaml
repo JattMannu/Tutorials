@@ -1,0 +1,71 @@
+---
+swagger: "2.0"
+info:
+  description: "Out Of firewall APIs"
+  version: "0.0.1"
+  title: "Vault Api"
+  termsOfService: "Please use."
+  contact:
+    name: "ASRD"
+    url: "Http:\\\\www.autodesk.com"
+    email: "mail@email.com"
+  license:
+    name: "MIT"
+    url: "http://opensource.org/licenses/MIT"
+paths:
+  /folder:
+    get:
+      summary: "You get a folder from a $$$ server"
+      description: "VROOM, Here is a folder!"
+      operationId: "folderGET"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+        408:
+          description: "GAME OVER"
+      x-swagger-router-controller: "Default"
+    post:
+      summary: "Lets make a folder?"
+      description: "WOW a new folder"
+      operationId: "folderPOST"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+        408:
+          description: "I dont want to make a folder."
+      x-swagger-router-controller: "Default"
+    delete:
+      summary: "You have the power to delete a folder"
+      description: "Choose wisely"
+      operationId: "folderDELETE"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+        404:
+          description: "Stop waving the stick in the thin air"
+        408:
+          description: "Your attack was ineffective.Try again later."
+      x-swagger-router-controller: "Default"
+  /demo:
+    get:
+      summary: "DEMO GET"
+      description: "desc"
+      operationId: "demoGET"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "Default"
+    post:
+      summary: "DEMO Post"
+      description: "desc"
+      operationId: "demoPOST"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "Default"
+definitions: {}
