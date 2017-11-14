@@ -47,6 +47,17 @@ const VaultURL = 'http://ecs-92033903.ecs.ads.autodesk.com/AutodeskDM/Services/'
 //         console.log(res.text);
 //     });
 
-simpleAPIs.Demo1().then(function (data) {
-    console.log(data);
-});
+// simpleAPIs.Demo1().then(function (data) {
+//     console.log(data);
+// });
+
+
+
+request
+    .post('https://developer-dev.api.autodesk.com/authentication/v1/authenticate')
+    .set('Content-type', 'application/x-www-form-urlencoded')
+    .send('client_id=RMdz1IX4SYC5cs0IimbMEq4uvKTPwdHW&client_secret=GBBa2totxrYyxS0J&grant_type=client_credentials')
+    .end(function (err, res) {
+        console.log(err);
+        console.log(res.text);
+    })
