@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://manytutors.com/coordinators/login -->
+<html class=" js no-touch csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> ManyTutors Tuition Database - Be a tuition coordinator / tuition agent </title>
+    <meta name="description" content=" Sign up as a tuition coordinator, tuition agent or tuition centre to access our advanced, easy to use tuition database. We have more than 45,000  tutors. Find tutors in Singapore quickly. ">
+
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" href="https://manytutors.com/coordinators/pages/ico/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://manytutors.com/coordinators/pages/ico/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://manytutors.com/coordinators/pages/ico/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://manytutors.com/coordinators/pages/ico/152.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    
+     <!-- BEGIN Vendor CSS-->
+    <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/icon" rel="stylesheet">
+    <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/font-awesome.min.css">
+     
+     <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/select2.css" rel="stylesheet" type="text/css" media="screen">
+     <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/switchery.min.css" rel="stylesheet" type="text/css" media="screen">
+     <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+     <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/lightbox.css" rel="stylesheet" type="text/css">
+      <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen">
+     
+     
+      <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
+     <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
+     
+
+        
+     <!-- BEGIN Pages CSS-->
+    <link href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/pages.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/style.css" rel="stylesheet" type="text/css">
+
+    <script async="" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/analytics.js.download"></script><script id="facebook-jssdk" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/sdk.js.download"></script><script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.min.js.download"></script>
+
+    <!--[if lte IE 9]>
+        <link href="pages/css/ie9.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <script type="text/javascript">
+    window.onload = function() {
+        // fix for windows 8
+        if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
+            document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/pages/css/windows.chrome.fix.css" />'
+    }
+
+    var substringMatcher = function(strs) {
+      return function findMatches(q, cb) {
+        var matches, substringRegex;
+
+        // an array that will be populated with substring matches
+        matches = [];
+
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
+
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(strs, function(i, str) {
+          if (substrRegex.test(str)) {
+            matches.push(str);
+          }
+        });
+
+        cb(matches);
+      };
+    };
+
+    function scrollToContent(c) {
+        var offset = c.offset(); // Contains .top and .left
+        offset.left -= 20;
+        offset.top -= 80;
+
+        $('html, body').animate({
+            scrollTop: offset.top,
+            scrollLeft: offset.left
+        });
+    }
+
+    notifySuccess = function(msg) {
+        options = {
+            'message': msg,
+            'style': 'bar',
+            'type': 'success',
+            'position': 'top'
+        };
+       $('body').pgNotification(options).show();
+    }
+
+    notifyError = function(msg) {
+        options = {
+            'message': msg,
+            'style': 'bar',
+            'type': 'error',
+            'position': 'top'
+        };
+       $('body').pgNotification(options).show();
+    }
+
+    </script>
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100%;overflow:hidden;position:fixed;width:100%}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}</style></head>
+<body class="fixed-header  windows desktop">
+        <!-- START PAGE-CONTAINER -->
+        <div class="page-container">
+
+        <!-- START PAGE HEADER WRAPPER -->
+            <!-- START HEADER -->
+            <div class="header">
+    <div class=" pull-left">
+        <div class="header-inner">
+            <div class="brand inline">
+                <a href="https://manytutors.com/">
+                                            <img class="header-logo" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/logo.png" alt="logo" height="25">
+                                    </a>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right">
+        <!-- START User Infos -->
+        <div class="navbar-tutor-wrapper">
+                                                <ul class="list-inline p-t-5">
+                        <li>
+                            <button class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#modalSlideUp">
+                                <i class="fa fa-paypal fa-fw"></i> Coordinator Signup
+                            </button>
+                        </li>
+                    </ul>
+                            
+        </div>
+        <!-- END User Info-->
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                    </button>
+                    <h3>Subscribe to be a Tuition Coordinator</h3>
+                </div>
+                <div class="modal-body">
+                    <h5>This is the easiest way to reach out to 100,000 tutors. (45,000 in our tuition database and 70,000 in our forum.)</h5>
+
+                     <p> The package above is charged at $255/quarter. There are 3 ways to pay.</p>
+                     <ol>
+                         <li>Email us for bank transfer</li>
+                         <li> Email us for cheque payment</li>
+                         <li>Click the subscribe button below for credit card or Paypal</li>
+                     </ol>
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="MTSQVK6HGXX5Y">
+                        <input type="image" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/paypal3.png" onmouseover="this.src=&#39;/assets/img/paypal2.png&#39;" onmouseout="this.src=&#39;/assets/img/paypal3.png&#39;" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                        <img alt="" border="0" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/pixel.gif" width="1" height="1">
+                    </form>
+
+                    <hr>
+                    <p>Interested to find out more? Contact us at enquiry@manytutors.com or +65 97120619.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal-dialog -->            <!-- END HEADER -->
+        <!-- END PAGE HEADER WRAPPER -->
+
+        <!-- START PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrapper coordinator-container" style="padding-top: 60px;">
+            <!-- START PAGE CONTENT -->
+            <div class="content">
+
+                <!-- START CONTAINER FLUID -->
+                <div class="">
+    <!-- BEGIN PlACE PAGE CONTENT HERE -->
+
+        <div class="row" style="
+    background-image: url(https://manytutors.com/assets/img/background-coor1.jpg);
+    background-size: cover;
+    margin-top: -75px;
+    background-position: right top;">
+
+        <div class="col-xs-12 col-lg-7 col-md-7"><!--
+            <div class="full-height">
+                <div class="panel-body text-center">
+                    <img class="coordinator_landing_image image-responsive-height thumbnail" src="/assets/img/callcenter.jpg" alt="">
+                </div>
+            </div>-->
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-8 col-sm-offset-2 col-md-offset-0">
+            <div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h2 style="
+    color: white;
+    font-weight: 500;
+">Tutor Database for Coordinators<br>Reach 100,000 tutors.
+        <p style="
+    color: white;
+    font-weight: 500;
+">
+        Want to be a tuition coordinator or a tuition agent?
+        </p>
+        </h2>
+
+    </div>
+    <div class="panel-body">
+        <form method="POST" action="https://manytutors.com/coordinators/login" accept-charset="UTF-8"><input name="_token" type="hidden" value="8YXBVa4GMnA3Kk0Ngi602IiSJWnITJjTzjPNMMAI">
+            <div class="form-group form-group-default">
+                <label for="username">Username</label>
+                <input class="form-control" name="username" type="text" value="" id="username">
+                
+            </div>
+
+            <div class="form-group form-group-default">
+                <label for="password">Password</label>
+                <input class="form-control" name="password" type="password" value="" id="password">
+                
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="https://manytutors.com/coordinators/guest" class="btn btn-lg btn-block"> <i class="fa fa-user fa-fw"></i> Login as Guest</a>
+                </div>
+                <div class="col-sm-6">
+                    <input class="btn btn-complete btn-lg btn-block" type="submit" value="Login">
+                </div>    
+            </div> 
+
+        </form>
+
+
+    </div>
+</div>        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            
+
+<div class="container-fluid container-fixed-lg bg-white">
+    <div class="row">
+    <div class="container">
+
+        <div class="col-lg-12" style="padding-top:15px;">
+            <h2 style="font-weight:900">10 reasons</h2>
+            <h4>Why should you subscribe to ManyTutors Tuition Coordinator database?</h4>
+            <br>
+            <hr>
+        </div>
+
+        <div class="col-lg-12">
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="lead" style="font-weight:900;">Home Based Tuition Matching</p>
+          
+                    <ol>
+                        <li>
+                            Earn up to $10 000 per month full-time and $2000 part-time easily as a tuition agent.
+                            (Don't believe? Refer to interview of entrepreneur of the year nominee.)
+                        </li>
+                        <li>
+                            We know it can be done because Manytutors.com is a tuition agency too!
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-lg-12">
+            <hr>
+            
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <p class="lead" style="font-weight:900;">Easiest To Find Tutors (45,000 Tutors):</p>
+             
+                    <ol>
+                        <li>
+                        Make sure you know what you are getting. Look at how many tutors visit ManyTutors. <a href="https://www.similarweb.com/website/manytutors.com" target="_blank">(Traffic Stats by Similar Web)</a>
+                        </li>
+                        <li>
+                        Our database has more than 45,000 available tutors from all over Singapore
+                        </li>
+                  
+                        <li>
+                            Our database is cost-effective (only $85 a month!). You just have to match 1 assignment a month to cover the cost of the database. The rest of the commision goes to your own pocket!
+                        </li>
+               
+                        <li>
+                            The database is user friendly and the profiles include detailed information about the tutors. They may upload their pictures and results slips.
+                        </li>
+                        <li>
+                            Free sample of the database by signing in as Guest*. (No contact information and additional details given for trial version)
+                        </li>
+                         <li>
+                            Tutor blacklist feature. <a href="https://blog.manytutors.com/faq-how-to-blacklist-tutors-6f5861ceb732#.yt6dtktpl" target="_blank">Read about how you can blacklist tutors here.</a>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+
+           <div class="col-lg-12">
+            <hr>
+
+            <p class="lead" style="font-weight:900;">Active Tutors:</p>
+
+            <ol>
+                <li>
+                    200 new tutors every week. You will always have new tutors to choose from.
+                </li>
+                  <li>
+                    See reviews of tutors from other coordinators, post reviews about your good and bad experiences with our tutors.
+                </li>
+                   <li>
+                    Flag tutors who are no longer teaching so that you no longer have to waste time calling in the future.
+                </li>
+                         <li>
+                            Our tutors are able to update or delete their profiles real time so all tutors are currently looking for assignments. This is something unique to our database.
+                        </li>
+            </ol>
+            
+        </div>
+
+
+         <div class="col-lg-12">
+            <hr>
+
+            <p class="lead" style="font-weight:900;">Music Tutors:</p>
+
+            <ol>
+                <li>
+                    Want to look for piano tutors? What about violin for guitar tutors? You can access them all when you subscribe to our database.
+                </li>
+                  <li>
+                    We have close to 5000 music teachers all around Singapore.
+                </li>
+            </ol>
+        </div>
+
+
+        <div class="col-lg-12">
+            <hr>
+
+            <p class="lead" style="font-weight:900;">Tution Assignment Jobs Forum:</p>
+
+            <ol>
+                <li>
+                    Save time by not contacting the tutors. Post your assignments in the <a href="http://forum.manytutors.com/">ManyTutors Tuition Assignment Jobs Forum</a> and the tutors will contact you instead.
+                </li>
+
+                <li>
+                    Check it out, there are 1500 to 3000 job postings monthly. 
+                </li>
+
+            </ol>
+        </div>
+
+
+
+        <div class="col-lg-12">
+            <hr>
+
+            <p class="lead" style="font-weight:900;">Automatic Emails to Nearby Tutors:</p>
+
+            <ol>
+                <li>
+                    Emails will be sent out to tutors staying within 3km of the assignment.  
+                </li>
+
+                <li>
+                    Everything is automatic, our system will pick out assignments you post in the forum for sending. 
+                </li>
+
+
+                <li>
+                    Responses will be coagulated inside your account. 
+                </li>
+
+                <li>
+                    Blog post: <a href="https://blog.manytutors.com/faq-how-to-send-out-job-emails-to-tutors-607cf7e77585#.q635ti1pi" target="_blank">How to send job invitation emails to tutors?</a>
+                </li>
+
+            </ol>
+        </div>
+
+
+            <div class="col-lg-12">
+            <hr>
+
+            <p class="lead" style="font-weight:900;">#1 Ranking in Google</p>
+
+            <ol>
+                <li>
+                    If you type "tuition", "singapore tuition", "tuition in singapore" in google, you will see what we are #1. 
+                </li>
+
+                <li>
+                    This means that tutors will be able to find your jobs easily. 
+                </li>
+
+            </ol>
+        </div>
+
+        <div class="col-lg-12">
+
+            <hr>
+
+            <p class="lead" style="font-weight:900;">Facebook Link Up:</p>
+
+            <ol>
+                <li>
+                    All tuition assignments you post on the Assignment will be automatically posted on the ManyTutors.com Fabebook Fan page!
+                </li>
+                <li>
+                    The ManyTutors Facebook link allows you to efficiently reach out to potential tutors.
+                </li>
+                <li>
+                    Your assignments will appear on the Wall of all our Fans on Facebook.
+                </li>
+                <li>
+                    Availiable online so you may access them anywhere.
+                </li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12">
+            <hr>
+            <p class="lead" style="font-weight:900;">
+                Free starter kit:
+            </p>
+
+            <ol>
+                <li>
+                    Spend one day at home to learn tuition coordinating.
+                </li>
+                <li>
+                    Use our easy starter kit to start off tuition coordinating at home.
+                </li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12">
+            <hr>
+            <p class="lead" style="font-weight:900;">
+                Interested to find out more?:
+            </p>
+
+            <ul>
+                <li>
+                Package above is charged at only $85 / month. Subscribers are required to sign up for 3 months at a time.
+                </li>
+                <li>
+                    Phone: 9712 0619 (10am - 7pm)
+                </li>
+                <li>
+                    Email: enquiry@manytutors.com
+                </li>
+
+            </ul>
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="MTSQVK6HGXX5Y">
+                        <input type="image" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/paypal3.png" onmouseover="this.src=&#39;/assets/img/paypal2.png&#39;" onmouseout="this.src=&#39;/assets/img/paypal3.png&#39;" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                        <img alt="" border="0" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/pixel.gif" width="1" height="1">
+                    </form>
+                    (If you prefer Bank Transfer, please make a payment of $255 to our DBS Current Account at 027-902988-9 and email us.)
+
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <!-- END PLACE PAGE CONTENT HERE -->
+
+
+</div>
+                <!-- END CONTAINER FLUID -->
+                
+            </div>
+            <!-- END PAGE CONTENT -->
+
+            <!-- START FOOTER -->
+            <div class="container-fluid container-fixed-lg footer">
+    <div class="copyright sm-text-center">
+        <p class="small no-margin pull-left sm-pull-reset">
+            <span class="hint-text">Copyright © 2017</span>
+            <span class="hint-text">ManyTutors.com</span>.
+            <span class="hint-text">All rights reserved.</span>
+            <span class="sm-block"><a href="https://manytutors.com/terms" class="m-l-10 m-r-10">Terms of use</a>
+            </span>
+        </p>
+        <div class="clearfix"></div>
+    </div>
+</div>            <!-- END FOOTER -->
+        </div>
+        <!-- END PAGE CONTENT WRAPPER -->
+
+</div>
+    <!-- END PAGE CONTAINER -->
+
+    <!-- BEGIN VENDOR JS -->
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/email-decode.min.js.download"></script><script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/modernizr.custom.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery-ui.min.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap.min.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery-easy.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.unveil.min.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.bez.min.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.ioslist.min.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.actual.min.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.scrollbar.min.js.download"></script>
+    <script type="text/javascript" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/select2.min.js.download"></script>
+    <script type="text/javascript" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/classie.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/switchery.min.js.download" type="text/javascript"></script>
+    <script type="text/javascript" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/autoNumeric.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bloodhound.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/typeahead.bundle.min.js.download"></script>
+    <script type="text/javascript" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap-tagsinput.js.download"></script>
+    <script type="text/javascript" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.inputmask.min.js.download"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.bootstrap.wizard.min.js.download" type="text/javascript"></script>
+    
+    
+    
+     <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap-datepicker.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/bootstrap-timepicker.min.js.download" type="text/javascript"></script>
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/lightbox.min.js.download" type="text/javascript"></script><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="https://manytutors.com/coordinators/login"></a><a class="lb-next" href="https://manytutors.com/coordinators/login"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+    <script async="" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/moment.min.js.download"></script>
+
+    
+    <!-- END VENDOR JS -->
+
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/pages.min.js.download"></script>
+    <!-- END CORE TEMPLATE JSON -->
+
+    <script src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/jquery.autosize.min.js.download"></script>
+
+    <script>
+	window.fbAsyncInit = function () {
+		FB.init({
+			appId:   '811783198907355',
+			cookie:  true,  // enable cookies to allow the server to access
+		                    // the session
+			xfbml:   true,  // parse social plugins on this page
+			version: 'v2.6' // use version 2.1
+		});
+
+		FB.Event.subscribe('messenger_checkbox', function (e) {
+			console.log("messenger_checkbox event");
+			console.log(e);
+
+			if (e.event === 'rendered') {
+				console.log("Plugin was rendered");
+			} else if (e.event === 'checkbox') {
+				var checkboxState = e.state;
+				console.log("Checkbox state: " + checkboxState);
+			} else if (e.event === 'not_you') {
+				console.log("User clicked 'not you'");
+			} else if (e.event === 'hidden') {
+				console.log("Plugin was hidden");
+			}
+		});
+
+
+		FB.Event.subscribe('send_to_messenger', function (e) {
+			// callback for events triggered by the plugin
+			sentToMessenger(e);
+		});
+	};
+
+	// Load the SDK asynchronously
+	(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+
+        
+    
+
+    <script>
+        function goToClassTab()
+        {
+            $('ul.tutor-dashboard-tabs').find('li a[href=#group-tuition-tab]').tab('show');
+            setTimeout(function() {
+                scrollToContent($('.group-tuition-wrapper'));
+            }, 200);
+        }
+
+        $(document).ready(function() {
+            
+           
+        });
+
+        // Max Char Count Library
+        (function( $ ) {
+            $.fn.maxCharCount = function() {
+                var c = this;
+                var f = $('#'+ c.data('maxchar-target') );
+                f.keyup(function() {
+                    triggerCharCount(c, $(this));
+                });
+                triggerCharCount(c, f);
+            };
+
+            function triggerCharCount(c, f) {
+                var maxChar = c.data('maxchar');
+
+                var textLength = f.val().length;
+                var textRemaining = maxChar - textLength;
+
+                if (textRemaining < 10) {
+                    $(f).parent().addClass('text-danger');
+                } else {
+                    $(f).parent().removeClass('text-danger');
+                }
+                c.html(textRemaining);
+            }
+
+            window.success = function success(msg) {
+	            options = {
+		            'message': msg,
+		            'style':   'simple',
+		            'type':    'success'
+	            };
+	            $('body').pgNotification(options).show();
+            }
+        })( jQuery );
+
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65006686-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+    
+    
+
+
+
+
+
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./ManyTutors Tuition Database - Be a tuition coordinator _ tuition agent_files/lY4eZXm_YWu.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div></body></html>
