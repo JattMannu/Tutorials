@@ -14,11 +14,9 @@ spec:
           zone: dev
           version: v1
     spec:
-      hostNetwork: true
       containers:
         - name: hello-ctr
           image: nginxdemos/hello
           imagePullPolicy: IfNotPresent
           ports: 
             - containerPort : 80
-              name: http
