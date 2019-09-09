@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: auto-cron
+spec:
+  schedule: */10 * * * *
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: auto-ctr
+              image: refapp/automation:1.0
+              env:
+                - name: RUNNER_PROPERTIES
+                  value: application/target/classes/runner-enhk.properties
+                - name: extent.reporter.html.start
+                  value: "true"
+                - name: extent.reporter.html.out
+                  value: "/logs/test-output/moneyhero_enhk/HtmlReport/report.html"
+              args: ["-t", "@moneyhero_enhk", "-t", "~@tofix", "-t", "~@ignore", "-t", "~@TODO", "-t", "~@todo", "-t", "@sanity"]
+              imagePullPolicy: IfNotPresent 
+              volumeMounts:
+              - mountPath: /logs
+                name: logs 
+            volumes:
+            - name: logs
+              emptyDir: {}

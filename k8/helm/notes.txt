@@ -1,0 +1,19 @@
+helm = command line tool + tiller
+
+
+CC.OctopusCreditCards.HK.feature:85 # Filtering Each Provider Filter
+CC.OctopusCreditCards.HK.feature:104 # Filtering with Mixed provider and Reset All the result
+
+
+Helm data is not stored locally, It's store in Tiller , tiller is in the cluster. 
+
+
+Version 2 of helm
+helm init 
+
+
+minikube addons enable ingress
+minikube addons enable heapster
+
+Check if tiller is installed.
+k get all --namespace=kube-system -l name=tiller

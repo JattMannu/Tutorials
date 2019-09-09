@@ -1,0 +1,33 @@
+{{- range .Values.types }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "auto.fullname" . }}
+spec:
+  schedule: "{{.automation.schedule}}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: auto-ctr
+              image: {{.automation.image}}
+              env:
+                - name: RUNNER_PROPERTIES
+                  value: {{.automation.properties}}
+                - name: extent.reporter.html.start
+                  value: "true"
+                - name: extent.reporter.html.out
+                  value: "/logs/test-output/{{.automation.type}}/HtmlReport/report.html"
+              args: ["-t", "@{{.automation.type}}", "-t", "~@tofix", "-t", "~@ignore", "-t", "~@TODO", "-t", "~@todo", "-t", "@sanity"]
+              imagePullPolicy: IfNotPresent 
+              volumeMounts:
+                - mountPath: /logs
+                  name: logs 
+          restartPolicy: Never
+          #k explain CronJob.spec.jobTemplate.spec.template.spec
+          volumes:
+          - name: logs
+            emptyDir: {}
+---
+{{- end }}

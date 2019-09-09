@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: auto-pod
+    labels: 
+        zone: dev
+        version: v1
+spec:
+  containers:
+  - name: auto-ctr
+    image: {{.Values.automation.image}}
+    env:
+      - name: RUNNER_PROPERTIES
+        value: {{.Values.automation.properties}}
+      - name: extent.reporter.html.start
+        value: "true"
+      - name: extent.reporter.html.out
+        value: "/logs/test-output/{{.Values.automation.type}}/HtmlReport/report.html"
+    args: ["-t", "@{{.Values.automation.type}}", "-t", "~@tofix", "-t", "~@ignore", "-t", "~@TODO", "-t", "~@todo", "-t", "@sanity"]
+    imagePullPolicy: IfNotPresent 
+    volumeMounts:
+    - mountPath: /logs
+      name: logs
+  volumes:
+  - name: logs
+    emptyDir: {}
+
+   

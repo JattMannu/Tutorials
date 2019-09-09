@@ -1,0 +1,32 @@
+#Resource name must be unquie for each namespace.
+
+#prefix, make sure no name conflicts
+
+#helm template engine is similar to go-template engine.
+
+
+types:
+  - automation:
+      name: moneyhero-enhk
+      image: refapp/automation:1.0
+      type: moneyhero_enhk
+      properties: application/target/classes/runner-enhk.properties
+      schedule: "10 * * * *"
+  - automation:
+      name: moneyhero-zhhk
+      image: refapp/automation:1.0
+      type: moneyhero_zhhk
+      properties: application/target/classes/runner-zhhk.properties
+      schedule: "20 * * * *"
+  - automation:
+      name: money101
+      image: refapp/automation:1.0
+      type: money101
+      properties: application/target/classes/runner-tw.properties
+      schedule: "30 * * * *"
+  - automation:
+      name: singsaver
+      image: refapp/automation:1.0
+      type: singsaver
+      properties: application/target/classes/runner-sg.properties
+      schedule: "40 * * * *"

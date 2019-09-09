@@ -84,7 +84,8 @@ what is ??
 
 ``` k rollout status deployment hello-deploy```
 
-
+### Get Linked to the folder.
+``` minikube mount /home/manpreet/mounter:/logs ```
 
 
 

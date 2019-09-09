@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: auto-pod
+    labels: 
+        zone: dev
+        version: v1
+spec:
+  containers:
+  - name: auto-ctr
+    image: refapp/automation:1.0
+    env:
+      - name: RUNNER_PROPERTIES
+        value: "application/target/classes/runner-zhhk.properties"
+      - name: extent.reporter.html.start
+        value: "true"
+      - name: extent.reporter.html.out
+        value: "/logs/test-output/moneyhero_zhhk/HtmlReport/report.html"
+    args: ["-t", "@moneyhero_zhhk", "-t", "~@tofix", "-t", "~@ignore", "-t", "~@TODO", "-t", "~@todo", "-t", "@sanity"]
+    imagePullPolicy: IfNotPresent 
+    volumeMounts:
+    - mountPath: /logs
+      name: logs
+  volumes:
+  - name: logs
+    emptyDir: {}
+
+    

@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: auto-cron
+spec:
+  schedule: "*/30 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: auto-ctr
+              image: refapp/automation:1.0
+              imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
+      

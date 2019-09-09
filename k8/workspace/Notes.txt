@@ -1,0 +1,25 @@
+k delete pod auto-pod
+k create -f auto-pod.yml
+
+k logs auto-pod
+
+minikube ssh 
+
+cd /
+cd var
+su
+find -name "report.html"
+
+
+/var/lib/kubelet/pods/cf4c470e-aca5-45cf-84ac-19ba108807f6/volumes/kubernetes.io~empty-dir/logs/test-output/moneyhero_enhk/HtmlReport/report.html
+
+cp /var/lib/kubelet/pods/cf4c470e-aca5-45cf-84ac-19ba108807f6/volumes/kubernetes.io~empty-dir/logs/test-output/moneyhero_enhk/HtmlReport/report.html /hosthome/manpreet/mounter/
+
+How to follow the logs?
+kubectl logs --follow [Pod name]
+
+
+aws s3api get-bucket-location --bucket cag-automation-reports --profile automation
+
+
+ manpreet@manpreet-pc:~/Documents/workspace/mine/Tutorials/k8/workspace$ helm install auto
