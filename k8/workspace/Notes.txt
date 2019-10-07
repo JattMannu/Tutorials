@@ -19,7 +19,24 @@ How to follow the logs?
 kubectl logs --follow [Pod name]
 
 
-aws s3api get-bucket-location --bucket cag-automation-reports --profile automation
+aws s3api get-bucket-location --bucket cag-automation-reports --profile auto
+
+aws s3api get-bucket-location --bucket cag-automation-reports --profile auto
+aws s3api list-buckets --profile automation
+
+aws s3api list-objects --bucket cag-automation-reports
+
+aws s3api get-object --bucket cag-automation-reports --key index.html index1.html
+
+aws s3api get-object --bucket text-content --key dir/my_images.tar.bz2 my_images.tar.bz2
+
+aws s3api put-object --bucket cag-automation-reports --key dir-1/index.html --body index.html
+
+helm install auto
+
+aws s3api put-object --bucket cag-automation-reports --key index1.html --body ~/Documents/index.html  --profile auto
 
 
- manpreet@manpreet-pc:~/Documents/workspace/mine/Tutorials/k8/workspace$ helm install auto
+
+auto-cron-moneyhero-zhhk-1569561600-9zcwx    2/2     Running       0          18m
+auto-cron-moneyhero-zhhk-1569565200-xgv4d    2/2     Running       0          11m
