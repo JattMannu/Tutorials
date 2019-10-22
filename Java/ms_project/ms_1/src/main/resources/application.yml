@@ -1,0 +1,8 @@
+
+server:
+  port: 3031
+management:
+  endpoints:
+    web:
+      exposure:
+        include: heapdump,liquibase,loggers,prometheus,threaddump,info,metrics,health
