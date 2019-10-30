@@ -1,0 +1,19 @@
+{
+  "name": "electron_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "debug": "electron --inspect ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.0.0"
+  },
+  "dependencies": {
+    "superagent": "^5.1.0",
+    "bootstrap": "^4.3.1"
+  }
+}

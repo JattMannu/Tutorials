@@ -16,10 +16,10 @@ console.log(_url)
   const options = {
     hostname: hostname,
     port: 443,
-    path: '/v2/guild/search?name=Edit%20Conflictd',
+    path: '/v2/guild/search?name=Edit%20Conflict',
     method: 'GET',
     headers: {
-     // 'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     }
   };
   

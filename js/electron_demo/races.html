@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Guild Wars 2 Manager</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+
+<body>
+  <h1>Races</h1>
+  <p id="race-id"></p>
+  <div id="body-master">
+    <p>Skills</p>
+    <ul></ul>
+  </div>
+</body>
+<script>
+  const { ipcMain ,ipcRenderer } = require('electron');
+  const ul = document.querySelector('ul');  
+  ipcRenderer.invoke('my-invokable-ipc', "arg1", "arg2")
+  .then(function(msg){
+    console.log(msg);
+    document.querySelector('#race-id').innerHTML = msg;
+  });
+  
+  console.log("done!")
+
+</script>
+
+</html>
