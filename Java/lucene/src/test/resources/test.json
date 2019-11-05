@@ -1,0 +1,59 @@
+
+[
+  {
+    "studyId" : 321,
+    "name": "id1",
+    "lon": 204.0,
+    "lat": 101.0,
+    "stored" : true,
+    "book" :{
+      "name" : "Apple Book",
+      "author" : "Steve Jobs"
+    }
+  },
+  {
+    "studyId" : 456,
+    "name": "id2",
+    "lon": 204.0,
+    "lat": 101.0,
+    "stored" : true,
+    "book" :{
+      "name" : "Apple Book",
+      "author" : "Steve Jobs"
+    }
+  },
+  {
+    "studyId" : 867,
+    "name": "id3",
+    "lon": 204.0,
+    "lat": 101.0,
+    "stored" : false,
+    "book" :{
+      "name" : "Apple Book",
+      "author" : "Steve Jobs"
+    }
+  },
+  {
+    "studyId" : 234,
+    "name": "id3",
+    "lon": 204.0,
+    "lat": 101.0,
+    "stored" : false,
+    "book" :{
+      "name" : "Apple Book",
+      "author" : "Steve Jobs"
+    }
+  },
+  {
+    "studyId" : 46546,
+    "name": "id3",
+    "lon": 204.0,
+    "lat": 101.0,
+    "stored" : false,
+    "book" :{
+      "name" : "Apple Book",
+      "author" : "Steve Jobs"
+    }
+  }
+
+]
