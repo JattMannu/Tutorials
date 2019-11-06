@@ -1,26 +1,9 @@
 package com.lucene.demo;
 
-import com.lucene.demo.indexer.JsonIndexWriter;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
-import org.apache.lucene.document.TextField;
-import org.apache.lucene.index.DirectoryReader;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopScoreDocCollector;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.RAMDirectory;
-import org.apache.lucene.util.Version;
+import com.lucene.demo.indexer.InjectableJsonIndexWriter;
+import org.apache.lucene.document.IntPoint;
+import org.bson.BsonValue;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -32,8 +15,18 @@ public class Main {
         String JSON_DUMPS= "/data_dump/";
 
         try {
-            JsonIndexWriter lw = new JsonIndexWriter(INDEX_PATH, JSON_DUMPS);
+            //JsonIndexWriter lw = new JsonIndexWriter(INDEX_PATH, JSON_DUMPS);
+            InjectableJsonIndexWriter lw = new InjectableJsonIndexWriter(INDEX_PATH, JSON_DUMPS);
+            lw.addCustomlogic("root.details.infix_upgrade.attributes", (bsonValue, key, document) -> {
+                for (BsonValue obj : bsonValue.asArray()) {
+                    document.add(
+                            new IntPoint(
+                                    "root.details.infix_upgrade.attributes:attribute."+obj.asDocument().get("attribute").asString().getValue().toLowerCase(),
+                                    obj.asDocument().get("modifier").asInt32().getValue()));
 
+                }
+                return false;
+            });
             lw.createIndex();
 
 //            //Check the index has been created successfully

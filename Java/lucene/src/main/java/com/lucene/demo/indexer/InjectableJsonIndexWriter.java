@@ -1,6 +1,7 @@
 package com.lucene.demo.indexer;
 
 
+import com.lucene.demo.abstraction.Function;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -9,7 +10,6 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
 import org.bson.*;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -18,20 +18,26 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.stream.Stream;
 
-public class JsonIndexWriter {
+public class InjectableJsonIndexWriter {
 
+    private String indexPath = "";
+    private String jsonFolderPath = "";
+    private IndexWriter indexWriter = null;
+    private String ROOT = "root";
 
-    String indexPath = "";
+    private HashMap<String,Function> injects;
 
-    String jsonFolderPath = "";
-
-    IndexWriter indexWriter = null;
-
-    public JsonIndexWriter(String indexPath, String jsonFolderPath) {
+    public InjectableJsonIndexWriter(String indexPath, String jsonFolderPath) {
         this.indexPath = indexPath;
         this.jsonFolderPath = jsonFolderPath;
+        this.injects = new HashMap<>();
+    }
+
+    public void addCustomlogic(String key, Function function) {
+        this.injects.put(key, function);
     }
 
     public void createIndex() {
@@ -45,12 +51,12 @@ public class JsonIndexWriter {
                         try {
                             BsonDocument jsonObjects = parseBSONFile(path.toString());
                             Document doc = new Document();
-                            addDocument(jsonObjects, "root",doc);
+                            addDocument(jsonObjects, this.ROOT, doc);
                             System.out.println(doc.toString());
                             try {
                                 indexWriter.addDocument(doc);
                             } catch (IOException ex) {
-                                System.err.println("Error adding documents to the index. " +  ex.getMessage());
+                                System.err.println("Error adding documents to the index. " + ex.getMessage());
                             }
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
@@ -63,9 +69,6 @@ public class JsonIndexWriter {
         }
     }
 
-    /**
-     * Parse a Json file. The file path should be included in the constructor
-     */
     private JSONObject parseJSONFile(String path) throws FileNotFoundException {
 
         //Get the JSON file, in this case is in ~/resources/test.json
@@ -81,7 +84,6 @@ public class JsonIndexWriter {
 
     }
 
-
     public BsonDocument parseBSONFile(String path) throws FileNotFoundException {
         //Get the JSON file, in this case is in ~/resources/test.json
         InputStream jsonFile = new FileInputStream(path);
@@ -96,24 +98,27 @@ public class JsonIndexWriter {
         return document;
     }
 
-
-    public void addDocument(BsonDocument document , String _key, Document doc) {
+    public void addDocument(BsonDocument document, String _key, Document doc) {
 
         document.keySet().forEach(key -> {
             BsonValue bsonValue = document.get(key);
-            if (bsonValue.isArray()) addDocument(bsonValue.asArray(), String.format("%s.%s",_key,key), doc);
-            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(),String.format("%s.%s",_key,key), doc);
-            else addDocument(bsonValue, String.format("%s.%s",_key,key), doc);
+            if (bsonValue.isArray()) addDocument(bsonValue.asArray(), String.format("%s.%s", _key, key), doc);
+            else if (bsonValue.isDocument())
+                addDocument(bsonValue.asDocument(), String.format("%s.%s", _key, key), doc);
+            else addDocument(bsonValue, String.format("%s.%s", _key, key), doc);
         });
 
     }
 
     public void addDocument(BsonArray document, String key, Document doc) {
-        document.forEach(bsonValue -> {
+        if (injects.containsKey(key) && injects.get(key).apply(document, key, doc))
+            return;
+
+        for (BsonValue bsonValue : document) {
             if (bsonValue.isArray()) addDocument(bsonValue.asArray(), key, doc);
-            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(),key, doc);
+            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(), key, doc);
             else addDocument(bsonValue, key, doc);
-        });
+        }
 
     }
 
@@ -130,34 +135,34 @@ public class JsonIndexWriter {
 
     public void addDocument(BsonString document, String key, Document doc) {
         doc.add(new TextField(key, document.getValue(), Field.Store.YES));
-        doc.add(new TextField("root", document.getValue(), Field.Store.YES));
+        doc.add(new TextField(this.ROOT, document.getValue(), Field.Store.YES));
     }
 
     public void addDocument(BsonInt64 document, String key, Document doc) {
         //doc.add(new LongPoint(key, document.getValue(), Field.Store.YES));
         doc.add(new LongPoint(key, document.getValue()));
-        addDocument(new BsonString(document.getValue()+""),key,doc);
+        addDocument(new BsonString(document.getValue() + ""), key, doc);
     }
 
     public void addDocument(BsonInt32 document, String key, Document doc) {
         doc.add(new IntPoint(key, document.getValue()));
-        addDocument(new BsonString(document.getValue()+""),key,doc);
+        addDocument(new BsonString(document.getValue() + ""), key, doc);
     }
 
     public void addDocument(BsonDouble document, String key, Document doc) {
         doc.add(new DoublePoint(key, document.getValue()));
-        addDocument(new BsonString(document.getValue()+""),key,doc);
+        addDocument(new BsonString(document.getValue() + ""), key, doc);
     }
 
     public void addDocument(BsonBoolean document, String key, Document doc) {
         doc.add(new StringField(key, Boolean.toString(document.getValue()), Field.Store.YES));
-        doc.add(new StringField("root",  Boolean.toString(document.getValue()), Field.Store.YES));
+        //addDocument(new BsonString( Boolean.toString(document.getValue())), key, doc);
     }
 
     public boolean openIndex() {
         try {
 
-            Directory dir = FSDirectory.open( new File(indexPath).toPath());
+            Directory dir = FSDirectory.open(new File(indexPath).toPath());
             Analyzer analyzer = new StandardAnalyzer();
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 
