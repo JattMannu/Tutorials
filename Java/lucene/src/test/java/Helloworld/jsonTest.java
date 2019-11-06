@@ -31,7 +31,7 @@ public class jsonTest {
             lw.createIndex();
 
             //Check the index has been created successfully
-            Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH));
+            Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH).toPath());
             IndexReader indexReader = DirectoryReader.open(indexDirectory);
 
             int numDocs = indexReader.numDocs();
@@ -52,7 +52,7 @@ public class jsonTest {
 
     @org.junit.Test
     public void testQueryLucene() throws IOException, ParseException {
-        Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH));
+        Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH).toPath());
         IndexReader indexReader = DirectoryReader.open(indexDirectory);
         final IndexSearcher indexSearcher = new IndexSearcher(indexReader);
 
@@ -66,7 +66,7 @@ public class jsonTest {
 
     @org.junit.Test
     public void testQueryLucene1() throws IOException, ParseException {
-        Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH));
+        Directory indexDirectory = FSDirectory.open(new File(INDEX_PATH).toPath());
         IndexReader indexReader = DirectoryReader.open(indexDirectory);
         final IndexSearcher indexSearcher = new IndexSearcher(indexReader);
 

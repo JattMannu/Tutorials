@@ -61,9 +61,9 @@ public class LuceneIndexWriter {
 
     public boolean openIndex(){
         try {
-            Directory dir = FSDirectory.open(new File(indexPath));
-            Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
-            IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+            Directory dir = FSDirectory.open(new File(indexPath).toPath());
+            Analyzer analyzer = new StandardAnalyzer();
+            IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 
             //Always overwrite the directory
             iwc.setOpenMode(OpenMode.CREATE);
@@ -89,9 +89,9 @@ public class LuceneIndexWriter {
                 if(type.equals(String.class)){
                     doc.add(new StringField(field, (String)object.get(field), Field.Store.NO));
                 }else if(type.equals(Long.class)){
-                    doc.add(new LongField(field, (Long) object.get(field), Field.Store.YES));
+                    doc.add(new LongPoint(field, (Long) object.get(field)));
                 }else if(type.equals(Double.class)){
-                    doc.add(new DoubleField(field, (Double) object.get(field), Field.Store.YES));
+                    doc.add(new DoublePoint(field, (Double) object.get(field)));
                 }else if(type.equals(Boolean.class)){
                     doc.add(new StringField(field, object.get(field).toString(), Field.Store.YES));
                 }
@@ -118,9 +118,9 @@ public class LuceneIndexWriter {
                 if(type.equals(String.class)){
                     doc.add(new StringField(field, (String)object.get(field), Field.Store.NO));
                 }else if(type.equals(Long.class)){
-                    doc.add(new LongField(field, (Long) object.get(field), Field.Store.YES));
+                    doc.add(new LongPoint(field, (Long) object.get(field)));
                 }else if(type.equals(Double.class)){
-                    doc.add(new DoubleField(field, (Double) object.get(field), Field.Store.YES));
+                    doc.add(new DoublePoint(field, (Double) object.get(field)));
                 }else if(type.equals(Boolean.class)){
                     doc.add(new StringField(field, object.get(field).toString(), Field.Store.YES));
                 }
@@ -140,9 +140,9 @@ public class LuceneIndexWriter {
                 if(type.equals(String.class)){
                     doc.add(new StringField(field, (String)object.get(field), Field.Store.NO));
                 }else if(type.equals(Long.class)){
-                    doc.add(new LongField(field, (Long) object.get(field), Field.Store.YES));
+                    doc.add(new LongPoint(field, (Long) object.get(field)));
                 }else if(type.equals(Double.class)){
-                    doc.add(new DoubleField(field, (Double) object.get(field), Field.Store.YES));
+                    doc.add(new DoublePoint(field, (Double) object.get(field)));
                 }else if(type.equals(Boolean.class)){
                     doc.add(new StringField(field, object.get(field).toString(), Field.Store.YES));
                 }else if(type.equals(Boolean.class)){

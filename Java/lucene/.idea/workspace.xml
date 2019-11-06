@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8abb3997-dbfe-4b0b-907b-a5f211471e98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucene/demo/searcher/MyIndexSearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_Lucene40_0.frq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_Lucene40_0.prx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_Lucene40_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_Lucene40_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_nrm.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/_5_nrm.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/segments.gen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_dir/segments_7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_dump/35019.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_dump/35019.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data_dump/58.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data_dump/58.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helloworld/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Helloworld/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../k8/workspace/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../k8/workspace/Notes.txt" afterDir="false" />
     </list>
@@ -18,51 +39,54 @@
     <session id="1924600875">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="14" />
-          <entry key="java" value="14" />
-          <entry key="json" value="5" />
+          <entry key="class" value="33" />
+          <entry key="java" value="23" />
+          <entry key="json" value="7" />
+          <entry key="pom" value="1" />
           <entry key="properties" value="1" />
-          <entry key="xml" value="1" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="14" />
-          <entry key="JAVA" value="14" />
-          <entry key="JSON" value="5" />
+          <entry key="CLASS" value="33" />
+          <entry key="JAVA" value="23" />
+          <entry key="JSON" value="7" />
           <entry key="Properties" value="1" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1353" />
+          <entry key="java" value="2258" />
           <entry key="json" value="104" />
-          <entry key="xml" value="4" />
+          <entry key="xml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1353" />
+          <entry key="JAVA" value="2258" />
           <entry key="JSON" value="104" />
-          <entry key="XML" value="4" />
+          <entry key="XML" value="32" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="166" selection-start-line="166" selection-end-line="166" />
+            <state relative-caret-position="361">
+              <caret line="245" column="65" selection-start-line="245" selection-start-column="65" selection-end-line="245" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,19 +95,69 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/document/TextField.class">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/Document.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            <state relative-caret-position="261">
+              <caret line="140" column="24" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/8.3.0/lucene-queryparser-8.3.0.jar!/org/apache/lucene/queryparser/complexPhrase/ComplexPhraseQueryParser.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+              <folding>
+                <element signature="e#1932#1933#0" expanded="true" />
+                <element signature="e#1959#1960#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/document/Document.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="154" column="24" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
+            <state relative-caret-position="325">
+              <caret line="137" column="33" selection-start-line="137" selection-start-column="33" selection-end-line="137" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/LongPoint.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="105" column="84" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="84" />
+              <folding>
+                <element signature="e#2442#2443#0" expanded="true" />
+                <element signature="e#2505#2506#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/Field.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-918">
+              <caret line="207" column="36" selection-start-line="207" selection-start-column="36" selection-end-line="207" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/searcher/MyIndexSearcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="613">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,8 +165,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="93" column="73" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+            <state relative-caret-position="523">
+              <caret line="145" column="53" selection-start-line="145" selection-start-column="53" selection-end-line="145" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,50 +177,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="69" column="71" selection-start-line="69" selection-start-column="71" selection-end-line="69" selection-end-column="71" />
+            <state relative-caret-position="559">
+              <caret line="54" column="81" selection-start-line="54" selection-start-column="81" selection-end-line="54" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/test.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/62.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/6.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="10" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -154,8 +189,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="89" column="19" lean-forward="true" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+            <state relative-caret-position="487">
+              <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,6 +212,7 @@
       <find>JSON_FILE_PATH</find>
       <find>resources</find>
       <find>re</find>
+      <find>range</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,17 +221,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/Main.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data_dump/88985.json" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/test.json" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data_dump/62.json" />
-        <option value="$PROJECT_DIR$/src/test/java/Helloworld/Test.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data_dump/6.json" />
+        <option value="$PROJECT_DIR$/src/main/resources/data_dump/58.json" />
+        <option value="$PROJECT_DIR$/src/main/resources/data_dump/35019.json" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Helloworld/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/searcher/MyIndexSearcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java" />
       </list>
     </option>
   </component>
@@ -217,18 +256,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="lucene_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="lucene" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lucene_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lucene" type="462c0819:PsiDirectoryNode" />
-              <item name="index_dir" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lucene_demo" type="b2602c69:ProjectViewProjectNode" />
@@ -276,14 +310,6 @@
               <item name="lucene_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="lucene" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="data_dump" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lucene_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lucene" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -312,7 +338,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,7 +363,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.jsonTest_1.testQueryLucene2">
+  <component name="RunManager" selected="JUnit.jsonTest_1.testQueryLucene_free2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lucene.demo.Main" />
       <module name="lucene" />
@@ -351,7 +377,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jsonTest_1.testQueryLucene" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="jsonTest_1.testQueryLucene_Boosting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lucene" />
       <extension name="coverage">
         <pattern>
@@ -361,13 +387,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="Helloworld" />
       <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest_1" />
-      <option name="METHOD_NAME" value="testQueryLucene" />
+      <option name="METHOD_NAME" value="testQueryLucene_Boosting" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jsonTest_1.testQueryLucene2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="jsonTest_1.testQueryLucene_free" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lucene" />
       <extension name="coverage">
         <pattern>
@@ -377,13 +403,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="Helloworld" />
       <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest_1" />
-      <option name="METHOD_NAME" value="testQueryLucene2" />
+      <option name="METHOD_NAME" value="testQueryLucene_free" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jsonTest.testQueryLucene1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="jsonTest_1.testQueryLucene_free1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lucene" />
       <extension name="coverage">
         <pattern>
@@ -392,14 +418,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Helloworld" />
-      <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest" />
-      <option name="METHOD_NAME" value="testQueryLucene1" />
+      <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest_1" />
+      <option name="METHOD_NAME" value="testQueryLucene_free1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jsonTest.testWriteIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="jsonTest_1.testQueryLucene_free2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lucene" />
       <extension name="coverage">
         <pattern>
@@ -408,27 +434,27 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Helloworld" />
-      <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest" />
-      <option name="METHOD_NAME" value="testWriteIndex" />
+      <option name="MAIN_CLASS_NAME" value="Helloworld.jsonTest_1" />
+      <option name="METHOD_NAME" value="testQueryLucene_free2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.jsonTest.testQueryLucene1" />
+      <item itemvalue="JUnit.jsonTest_1.testQueryLucene_Boosting" />
+      <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.jsonTest_1.testQueryLucene" />
-      <item itemvalue="JUnit.jsonTest.testWriteIndex" />
-      <item itemvalue="JUnit.jsonTest_1.testQueryLucene2" />
+      <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free1" />
+      <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.jsonTest_1.testQueryLucene2" />
-        <item itemvalue="JUnit.jsonTest_1.testQueryLucene" />
+        <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free2" />
+        <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free1" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.jsonTest.testQueryLucene1" />
-        <item itemvalue="JUnit.jsonTest.testWriteIndex" />
+        <item itemvalue="JUnit.jsonTest_1.testQueryLucene_free" />
+        <item itemvalue="JUnit.jsonTest_1.testQueryLucene_Boosting" />
       </list>
     </recent_temporary>
   </component>
@@ -446,62 +472,63 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="jsonTest_testQueryLucene1 - 2019.11.05 at 17h 32m 44s.xml">
-      <configuration name="jsonTest.testQueryLucene1" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free - 2019.11.06 at 12h 35m 35s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_testWriteIndex - 2019.11.05 at 17h 33m 06s.xml">
-      <configuration name="jsonTest.testWriteIndex" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free - 2019.11.06 at 12h 36m 24s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_testQueryLucene1 - 2019.11.05 at 17h 35m 40s.xml">
-      <configuration name="jsonTest.testQueryLucene1" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free1 - 2019.11.06 at 12h 42m 17s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene - 2019.11.05 at 17h 36m 34s.xml">
-      <configuration name="jsonTest_1.testQueryLucene" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free1 - 2019.11.06 at 12h 43m 50s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene - 2019.11.05 at 17h 40m 06s.xml">
-      <configuration name="jsonTest_1.testQueryLucene" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free1 - 2019.11.06 at 12h 44m 18s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene - 2019.11.05 at 17h 40m 52s.xml">
-      <configuration name="jsonTest_1.testQueryLucene" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free1 - 2019.11.06 at 12h 44m 36s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene2 - 2019.11.05 at 17h 42m 24s.xml">
-      <configuration name="jsonTest_1.testQueryLucene2" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free1 - 2019.11.06 at 12h 44m 59s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene2 - 2019.11.05 at 17h 42m 49s.xml">
-      <configuration name="jsonTest_1.testQueryLucene2" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free2 - 2019.11.06 at 12h 45m 30s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene2 - 2019.11.05 at 17h 45m 18s.xml">
-      <configuration name="jsonTest_1.testQueryLucene2" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free2 - 2019.11.06 at 12h 45m 33s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="jsonTest_1_testQueryLucene2 - 2019.11.05 at 17h 49m 38s.xml">
-      <configuration name="jsonTest_1.testQueryLucene2" configurationId="JUnit" />
+    <history-entry file="jsonTest_1_testQueryLucene_free2 - 2019.11.06 at 12h 45m 53s.xml">
+      <configuration name="jsonTest_1.testQueryLucene_free2" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="629" width="2550" height="1351" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32947975" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32700247" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32700247" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32700247" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3996697" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32947975" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32700247" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -530,7 +557,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java</url>
-          <line>170</line>
+          <line>175</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
@@ -566,9 +593,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java</url>
-          <line>77</line>
+          <line>213</line>
           <properties />
-          <option name="timeStamp" value="42" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -623,39 +650,11 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-analyzers-common/4.0.0/lucene-analyzers-common-4.0.0.jar!/org/apache/lucene/analysis/standard/StandardAnalyzer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/search/IndexSearcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-          <folding>
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1881#1882#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources.properties" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/index/Term.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding>
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,13 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="110" column="11" selection-start-line="110" selection-start-column="11" selection-end-line="110" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
@@ -740,12 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
-          <folding>
-            <element signature="e#3122#3123#0" expanded="true" />
-            <element signature="e#3170#3171#0" expanded="true" />
-            <element signature="e#3203#3204#0" expanded="true" />
-            <element signature="e#3252#3253#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -760,20 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#2209#2210#0" expanded="true" />
-            <element signature="e#2260#2261#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,26 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="353" column="29" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="93" column="73" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="69" column="71" selection-start-line="69" selection-start-column="71" selection-end-line="69" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,10 +777,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/6.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="166" selection-start-line="166" selection-end-line="166" />
+        <state relative-caret-position="414">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/store/FSDirectory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/58.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/35019.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/62.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/util/Version.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-49">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/4.0.0/lucene-queryparser-4.0.0.jar!/org/apache/lucene/queryparser/classic/QueryParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/4.0.0/lucene-queryparser-4.0.0.jar!/org/apache/lucene/queryparser/classic/QueryParserBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="48" column="56" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queries/4.0.0/lucene-queries-4.0.0.pom">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-analyzers-common/4.0.0/lucene-analyzers-common-4.0.0.jar!/org/apache/lucene/analysis/standard/StandardAnalyzer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/4.0.0/lucene-queryparser-4.0.0.jar!/org/apache/lucene/queryparser/flexible/core/nodes/PathQueryNode.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1548">
+          <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/search/NumericRangeQuery.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="77" column="88" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/4.0.0/lucene-core-4.0.0.jar!/org/apache/lucene/search/IndexSearcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2916">
+          <caret line="205" column="103" selection-start-line="205" selection-start-column="98" selection-end-line="205" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/4.0.0/lucene-queryparser-4.0.0.jar!/org/apache/lucene/queryparser/flexible/standard/CommonQueryParserConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/TextField.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/LongRange.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/store/FSDirectory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="48" column="39" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/java/jdk-11/lib/src.zip!/java.base/java/nio/file/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+          <folding>
+            <element signature="e#7225#7226#0" expanded="true" />
+            <element signature="e#7293#7294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/java/jdk-11/lib/src.zip!/java.base/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="147" column="13" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/LuceneIndexWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="145" column="53" selection-start-line="145" selection-start-column="53" selection-end-line="145" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="54" column="81" selection-start-line="54" selection-start-column="81" selection-end-line="54" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -837,34 +949,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="89" column="19" lean-forward="true" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+        <state relative-caret-position="487">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/62.json">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/searcher/MyIndexSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="7" />
+        <state relative-caret-position="613">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data_dump/6.json">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/Document.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="10" />
+        <state relative-caret-position="261">
+          <caret line="140" column="24" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/Field.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918">
+          <caret line="207" column="36" selection-start-line="207" selection-start-column="36" selection-end-line="207" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/8.3.0/lucene-core-8.3.0.jar!/org/apache/lucene/document/LongPoint.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="105" column="84" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="84" />
+          <folding>
+            <element signature="e#2442#2443#0" expanded="true" />
+            <element signature="e#2505#2506#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucene/demo/indexer/JsonIndexWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="137" column="33" selection-start-line="137" selection-start-column="33" selection-end-line="137" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Helloworld/jsonTest_1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="361">
+          <caret line="245" column="65" selection-start-line="245" selection-start-column="65" selection-end-line="245" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-queryparser/8.3.0/lucene-queryparser-8.3.0.jar!/org/apache/lucene/queryparser/complexPhrase/ComplexPhraseQueryParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding>
+            <element signature="e#1932#1933#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -946,7 +1100,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: com.carrotsearch.randomizedtesting:randomizedtesting-runner:2.0.1</last-edited>
+          <last-edited>Maven: com.carrotsearch.randomizedtesting:randomizedtesting-runner:2.7.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

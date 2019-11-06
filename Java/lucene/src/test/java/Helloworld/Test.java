@@ -29,12 +29,12 @@ public class Test {
     public void hello_world() throws IOException, ParseException {
         // 0. Specify the analyzer for tokenizing text.
         //    The same analyzer should be used for indexing and searching
-        StandardAnalyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
+        StandardAnalyzer analyzer = new StandardAnalyzer();
 
         // 1. create the index
         Directory index = new RAMDirectory();
 
-        IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+        IndexWriterConfig config = new IndexWriterConfig( analyzer);
 
         IndexWriter w = new IndexWriter(index, config);
         addDoc(w, "Lucene in Action", "193398817");
@@ -52,7 +52,7 @@ public class Test {
         // when no field is explicitly specified in the query.
         Query q = null;
         try {
-            q = new QueryParser(Version.LUCENE_40, "title", analyzer).parse(querystr);
+            q = new QueryParser("title", analyzer).parse(querystr);
         } catch (org.apache.lucene.queryparser.classic.ParseException e) {
             e.printStackTrace();
         }
@@ -61,7 +61,7 @@ public class Test {
         int hitsPerPage = 10;
         IndexReader reader = DirectoryReader.open(index);
         IndexSearcher searcher = new IndexSearcher(reader);
-        TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage, true);
+        TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage, 4);
         searcher.search(q, collector);
         ScoreDoc[] hits = collector.topDocs().scoreDocs;
 

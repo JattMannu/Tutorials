@@ -1,0 +1,8 @@
+target
+*.cfe
+*.cfs
+*.si
+segments_5
+*.lock
+.idea
+

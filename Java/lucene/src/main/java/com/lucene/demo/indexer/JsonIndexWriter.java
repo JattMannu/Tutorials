@@ -45,8 +45,8 @@ public class JsonIndexWriter {
                         try {
                             BsonDocument jsonObjects = parseBSONFile(path.toString());
                             Document doc = new Document();
-                            addDocument(jsonObjects,doc);
-                            //System.out.println(doc.toString());
+                            addDocument(jsonObjects, "root",doc);
+                            System.out.println(doc.toString());
                             try {
                                 indexWriter.addDocument(doc);
                             } catch (IOException ex) {
@@ -97,13 +97,13 @@ public class JsonIndexWriter {
     }
 
 
-    public void addDocument(BsonDocument document , Document doc) {
+    public void addDocument(BsonDocument document , String _key, Document doc) {
 
         document.keySet().forEach(key -> {
             BsonValue bsonValue = document.get(key);
-            if (bsonValue.isArray()) addDocument(bsonValue.asArray(), key, doc);
-            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(), doc);
-            else addDocument(bsonValue, key, doc);
+            if (bsonValue.isArray()) addDocument(bsonValue.asArray(), String.format("%s:%s",_key,key), doc);
+            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(),String.format("%s:%s",_key,key), doc);
+            else addDocument(bsonValue, String.format("%s:%s",_key,key), doc);
         });
 
     }
@@ -111,7 +111,7 @@ public class JsonIndexWriter {
     public void addDocument(BsonArray document, String key, Document doc) {
         document.forEach(bsonValue -> {
             if (bsonValue.isArray()) addDocument(bsonValue.asArray(), key, doc);
-            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(), doc);
+            else if (bsonValue.isDocument()) addDocument(bsonValue.asDocument(),key, doc);
             else addDocument(bsonValue, key, doc);
         });
 
@@ -133,15 +133,19 @@ public class JsonIndexWriter {
     }
 
     public void addDocument(BsonInt64 document, String key, Document doc) {
-        doc.add(new LongField(key, document.getValue(), Field.Store.YES));
+        //doc.add(new LongPoint(key, document.getValue(), Field.Store.YES));
+        doc.add(new LongPoint(key, document.getValue()));
+        doc.add(new TextField(key, document.getValue()+"", Field.Store.YES));
     }
 
     public void addDocument(BsonInt32 document, String key, Document doc) {
-        doc.add(new IntField(key, document.getValue(), Field.Store.YES));
+        doc.add(new IntPoint(key, document.getValue()));
+        doc.add(new TextField(key, document.getValue()+"", Field.Store.YES));
     }
 
     public void addDocument(BsonDouble document, String key, Document doc) {
-        doc.add(new DoubleField(key, document.getValue(), Field.Store.YES));
+        doc.add(new DoublePoint(key, document.getValue()));
+        doc.add(new TextField(key, document.getValue()+"", Field.Store.YES));
     }
 
     public void addDocument(BsonBoolean document, String key, Document doc) {
@@ -150,9 +154,10 @@ public class JsonIndexWriter {
 
     public boolean openIndex() {
         try {
-            Directory dir = FSDirectory.open(new File(indexPath));
-            Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
-            IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+
+            Directory dir = FSDirectory.open( new File(indexPath).toPath());
+            Analyzer analyzer = new StandardAnalyzer();
+            IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 
             //Always overwrite the directory
             iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
