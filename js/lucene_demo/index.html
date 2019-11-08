@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Guild Wars 2: Item search</title>
+</head>
+
+<body>
+  <div id="loader">Loading…</div>
+  <div id="app" style="display: none;">
+    <label>Search for an item: <input id="search-field" type="text" /></label>
+    <ul id="result-list"></ul>
+  </div>
+
+  <script>
+  var itemLookup = JSON.parse(localStorage['gw2_items'] || '[]');
+  if (!itemLookup.length) {
+    fetchItems(0).then(pageCount => {
+        var pages = '_'.repeat(pageCount - 1).split('').map((x, i) => i + 1);
+        return runParallel(fetchItems, pages, 5)
+    })
+    .then(done => {
+      localStorage['gw2_items'] = JSON.stringify(itemLookup);
+      initialize();
+    })
+    .catch(console.log.bind(console));
+  }
+  else {
+    initialize();
+  }
+  function runParallel (func, args, jobCount) {
+    var sentinel = Symbol('sentinel');
+    function worker () {
+      if (!args.length) {
+        return Promise.resolve(sentinel);
+      }
+      return func(args.shift()).then(worker);
+    }
+    var workers = [];
+    for (var i = 0; i < jobCount; i++) {
+      workers.push(worker());
+    }
+    return Promise.all(workers).then(results => results.every(result => result === sentinel));
+  }
+  function fetchItems (page) {
+    if (page === true) {
+      Promise.resolve(true);
+    }
+    return fetch('https://api.guildwars2.com/v2/items?lang=en&page_size=200&page=' + page)
+      .then(result => {
+        if (result.ok) {
+          return result.json().then(items => {
+            if (items.text) {
+              return Promise.resolve(true);
+            }
+            items.forEach(item => itemLookup.push({ id: item.id, name: item.name }));
+            return parseInt(result.headers.get('X-Page-Total') || '0');
+          });
+        }
+        else {
+          return Promise.resolve(true);
+        }
+      });
+  }
+  function initialize () {
+    var loader = document.getElementById('loader');
+    loader.parentNode.removeChild(loader);
+    var resultList = document.getElementById('result-list');
+    var searchField = document.getElementById('search-field');
+    searchField.addEventListener('change', evt => filter(evt.target.value, resultList))
+    searchField.addEventListener('keydown', evt => {
+      if (evt.target.value.length > 3) {
+        filter(evt.target.value, resultList);
+      }
+    });
+    var app = document.getElementById('app');
+    app.style.display = null;
+  }
+  function filter (value, resultList) {
+    var query = new RegExp(regExpEscape(value), 'i');
+    resultList.innerHTML = '';
+    itemLookup.filter(item => query.exec(item.name)).forEach(item => {
+      var link = document.createElement('a');
+      link.href = 'http://wiki.guildwars2.com/wiki/Special:Search?search=' + encodeURIComponent(gw2ChatLink(item.id));
+      link.appendChild(document.createTextNode(item.name + ' (' + item.id + ')'));
+      var li = document.createElement('li');
+      li.appendChild(link);
+      resultList.appendChild(li);
+    });
+  }
+  function regExpEscape (s) {
+    return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+  function gw2ChatLink (id) {
+    var data = [];
+    while (id > 0) {
+      data.push(id & 255);
+      id = id >> 8;
+    }
+    while (data.length < 4 || data.length % 2 != 0) {
+      data.push(0);
+    }
+    return '[&' + btoa([2, 1].concat(data).map(x => String.fromCharCode(x)).join('')) + ']';
+  }
+  </script>
+</body>
+</html>

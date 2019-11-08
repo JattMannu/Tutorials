@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/989610a7d7.js" crossorigin="anonymous"></script>
+
+  <style>
+    .center {
+      text-align: center;
+      /* padding: 1%; */
+    }
+
+    .center-icon {
+      text-align: center;
+      padding: 0.5%;
+    }
+
+    .local-icon-large {
+      font-size: 300%;
+      max-width: 100px;
+      min-width: 50px;
+    }
+
+    .game-type {
+      max-width: 100px;
+      min-width: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <h1>i</h1>
+    <p>Percentage</p>
+    <div class="container-fluid">
+      <div class="row" id="item-6">
+        <div class="col">
+          <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 center" data-selector-type="image">
+              <img src="https://render.guildwars2.com/file/CC2E01E0F566A6EEF4F2EC2B19AA7A3E1FEFB1B4/60984.png"
+                alt="item" style="
+                    max-width: 100px;
+                    min-width: 50px;
+                ">
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 center-icon">
+              <i class="fas fa-wrench local-icon-large"></i>
+              <i class="fas fa-gem local-icon-large" style="color: orange;"></i>
+            </div>              
+            <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2 center">
+              <img src="https://db.gw2.fr/img/activity.png" class="game-type">
+              <img src="https://db.gw2.fr/img/dungeon.png" class="game-type">
+              <img src="https://db.gw2.fr/img/pve.png" class="game-type">
+              <img src="https://db.gw2.fr/img/wvw.png" class="game-type">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2 bg-success">
+              3
+            </div>
+            <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10 bg-warning">
+              4
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2 bg-success">
+              6
+            </div>
+            <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10 bg-warning">
+              7
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
