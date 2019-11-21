@@ -1,13 +1,23 @@
 package com.example.demo;
 
+import com.example.demo.controller.FriendsController;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class FriendsApplicationTests {
+public class FriendsApplicationTests {
+
+	@Autowired
+	FriendsController friendsController;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
+		Assert.assertNotNull(friendsController);
 	}
 
 }

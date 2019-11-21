@@ -34,13 +34,13 @@ public class FriendsController {
 //    }
 
     @PostMapping("/friend")
-    Friend create(@Valid @RequestBody Friend friend){
+    public Friend create(@Valid @RequestBody Friend friend){
         return friendsService.save(friend);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    List<FieldErrorMessage> exceptionHandler(MethodArgumentNotValidException e){
+    public List<FieldErrorMessage> exceptionHandler(MethodArgumentNotValidException e){
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
         return fieldErrors.stream().map(fieldError ->
                 new FieldErrorMessage(fieldError.getField(),
@@ -50,17 +50,17 @@ public class FriendsController {
 
 
     @GetMapping("/friend")
-    Iterable<Friend> read(){
+    public Iterable<Friend> read(){
         return friendsService.findAll();
     }
 
     @GetMapping("/friend/{id}")
-    Optional<Friend> read(@PathVariable Integer id){
+    public Optional<Friend> read(@PathVariable Integer id){
         return friendsService.findById(id);
     }
 
     @GetMapping("/friend/search")
-    Iterable<Friend> findByQuery(
+    public Iterable<Friend> findByQuery(
             @RequestParam(value = "first", required = false) String firstName,
             @RequestParam(value = "last", required = false) String lastName
     ){
@@ -76,7 +76,7 @@ public class FriendsController {
 
 
     @PutMapping("/friend")
-    ResponseEntity<Friend> update(@RequestBody Friend friend){
+    public ResponseEntity<Friend> update(@RequestBody Friend friend){
         if(friendsService.findById(friend.getId()).isPresent())
             return new ResponseEntity<>(friendsService.save(friend), HttpStatus.OK);
         else
@@ -84,7 +84,7 @@ public class FriendsController {
     }
 
     @DeleteMapping("/friend/{id}")
-    void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Integer id){
         friendsService.deleteById(id);
     }
 }
