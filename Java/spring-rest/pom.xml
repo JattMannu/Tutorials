@@ -16,5 +16,6 @@
         <module>movie-info-service</module>
         <module>rating-data-service</module>
         <module>discovery-server</module>
+        <module>mongodb-service</module>
     </modules>
 </project>

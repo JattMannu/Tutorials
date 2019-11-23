@@ -3,3 +3,6 @@ server:
 spring:
   application:
     name: movie-info-service
+
+api:
+  key: 7666ad0a8d8c7ea0fcf139e21f530a08
