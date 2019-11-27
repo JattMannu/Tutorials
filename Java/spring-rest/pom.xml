@@ -17,5 +17,6 @@
         <module>rating-data-service</module>
         <module>discovery-server</module>
         <module>mongodb-service</module>
+        <module>frontend</module>
     </modules>
 </project>

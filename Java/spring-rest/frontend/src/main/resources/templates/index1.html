@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Surinder Pal Kaur</title>
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="description" content="Surinder Pal's Resume"/>
+    <meta charset="UTF-8">
+
+    <link th:href="@{css/style.css}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="top">
+<div id="cv" class="instaFade">
+    <div class="mainDetails">
+        <div id="headshot" class="quickFade">
+            <img src="headshot.jpg" alt="Alan Smith"/>
+        </div>
+
+        <div id="name">
+            <h1 id="_name" class="quickFade delayTwo"></h1>
+            <h2 id="_title" class="quickFade delayThree">Job Title</h2>
+        </div>
+
+        <div id="contactDetails" class="quickFade delayFour">
+            <ul>
+                <li>e: <a id="_email"/></li>
+                <li>w: <a id="_website"/></li>
+                <li>m: <span id="_phone"/></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div id="mainArea" class="quickFade delayFive">
+        <section id="_personalProfile">
+            <article>
+                <div class="sectionTitle">
+                    <h1 id="_title"/>
+                </div>
+
+                <div class="sectionContent">
+                    <p id="_data"/>
+                <div>
+            </article>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_researchExperience">
+            <div class="sectionTitle">
+                <h1 id="_title"/>
+            </div>
+
+            <div id="_data" class="sectionContent">
+                <!-- <article>
+                    <h2>Job Title at Company</h2>
+                    <p class="subDetails">April 2011 - Present</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit.
+                        Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum
+                        porttitor.</p>
+                </article> -->
+            </div>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_workExperience">
+            <div class="sectionTitle">
+                <h1 id="_title"></h1>
+            </div>
+            <div id="_data" class="sectionContent"></div>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_skills">
+            <div class="sectionTitle">
+                <h1 id="_title"></h1>
+            </div>
+
+            <div class="sectionContent">
+                <ul id="_data" class="keySkills keySkills-2"/>
+            </div>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_education">
+            <div class="sectionTitle">
+                <h1 id="_title"></h1>
+            </div>
+            <div id="_data" class="sectionContent"></div>
+            <!-- <div class="sectionContent">
+                <article>
+                    <h2>College/University</h2>
+                    <p class="subDetails">Qualification</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit.
+                        Curabitur non consequat enim.</p>
+                </article>
+
+                <article>
+                    <h2>College/University</h2>
+                    <p class="subDetails">Qualification</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit.
+                        Curabitur non consequat enim.</p>
+                </article>
+            </div> -->
+            <div class="clear"></div>
+        </section>
+
+        <section id="_languangues">
+            <article>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_awards">
+            <article>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear"></div>
+        </section>
+
+        <section id="_fellowships">
+            <article class>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear">
+        </section>
+
+        <section id="_publications">
+            <article class>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear">
+        </section>
+
+        <section id="_conferences">
+            <article class>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear">
+        </section>
+
+        <section id="_workshops">
+            <article class>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear">
+        </section>
+
+        <section id="_references">
+            <article class>
+                <div class="sectionTitle">
+                    <h1 id="_title"></h1>
+                </div>
+                <div id="_data" class="sectionContent"></div>
+            </article>
+            <div class="clear">
+        </section>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/resume.js}"></script>
+
+<script type="text/javascript">
+		function setLabelText(id, value) {
+			$(id).html(value);
+		}
+
+		function addDataArray(id, arr) {
+			var element = $(id)
+			jQuery.each(arr, function () {
+				console.log(this)
+				var title = $("<h2/>").text(this.title);
+				var subTitle1 = $('<h3/>').text(this.subTitle1);
+				var subTitle2 = $('<p class="subDetails"/>').html(this.subTitle2);
+				var subTitle3 = $('<p/>').html(this.subTitle3);
+				var points = $('<ul class="keyPoints" />');
+				jQuery.each(this.points, function () {
+					var point = $('<li class="keyPoint"/>').text(this);
+					points.append(point);
+				})
+				var article = $("<article/>").append(title).append(subTitle1).append(subTitle2).append(subTitle3).append(points);
+				element.append(article)
+				//element.append( $("article"));
+			});
+		}
+
+		function setEmail(value) {
+			$("#_email").attr("href", `mailto:${value}`).attr("target", "_blank").text(value);
+		}
+
+		function setPhone(value) {
+			$("#_phone").text(value);
+		}
+
+		function setWebsite(value) {
+			$("#_website").attr("href", value).text(value);
+		}
+
+		function setSkills(id, arr) {
+			var element = $(id)
+			jQuery.each(arr, function () {
+				console.log(this)
+				var link = $('<a class="keySkill"/>').attr("href", this.url).attr("target", "_blank").text(this.skill);
+				var skill = $("<li/>").append(link)
+				element.append(skill)
+			});
+		}
+
+		function setList(id, arr, columns) {
+			var element = $(id)//.attr("class","keySkills");
+			var ul = $("<ul />").attr("class", "keySkills keySkills-" + columns);
+			jQuery.each(arr, function () {
+				var item = $("<li/>").html(this);
+				ul.append(item)
+			});
+			element.append(ul)
+		}
+
+
+		$(document).ready(function (e) {
+			var data = resume;
+			console.log(data.name);
+			console.log($("#root"));
+			setLabelText("#_name", data.name)
+			setLabelText("#_title", data.title)
+
+			setEmail(data.email)
+			setPhone(data.phone)
+			setWebsite(data.website)
+
+			setLabelText("#_personalProfile #_title", data.personalProfile.title)
+			setLabelText("#_personalProfile #_data", data.personalProfile.data)
+
+			setLabelText("#_researchExperience #_title", data.researchExperience.title)
+			addDataArray("#_researchExperience #_data", data.researchExperience.data)
+
+			setLabelText("#_workExperience #_title", data.workExperience.title)
+			addDataArray("#_workExperience #_data", data.workExperience.data)
+
+			
+			setLabelText("#_references #_title", data.references.title)
+			addDataArray("#_references #_data", data.references.data)
+
+			setLabelText("#_skills #_title", data.skills.title)
+			setSkills("#_skills #_data", data.skills.data)
+
+			setLabelText("#_languangues #_title", data.languangues.title)
+			setList("#_languangues #_data", data.languangues.data, 2)
+
+
+			setLabelText("#_fellowships #_title", data.fellowships.title)
+			setList("#_fellowships #_data", data.fellowships.data, 1)
+
+			setLabelText("#_awards #_title", data.awards.title)
+			setList("#_awards #_data", data.awards.data, 1)
+
+			setLabelText("#_publications #_title", data.publications.title)
+			setList("#_publications #_data", data.publications.data, 1)
+
+			setLabelText("#_conferences #_title", data.conferences.title)
+			setList("#_conferences #_data", data.conferences.data, 1)
+
+			setLabelText("#_workshops #_title", data.workshops.title)
+			setList("#_workshops #_data", data.workshops.data, 1)
+
+			setLabelText("#_education #_title", data.education.title)
+			addDataArray("#_education #_data", data.education.data)
+
+
+			//div.nova-v-publication-item__body a.nova-e-link 
+
+		});
+
+</script>
+
+</body>
+
+</html>
