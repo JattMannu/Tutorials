@@ -4,6 +4,7 @@ import com.example.demo.model.Movie;
 import org.bson.BSONEncoder;
 import org.bson.BsonDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ public class MovieController {
     private String apikey;
 
     @Autowired
+    @Qualifier("apple1")
     private RestTemplate restTemplate;
 
     @Autowired

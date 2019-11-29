@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 public class MovieInfoServiceApplication {
 
-	@Bean
+	@Bean(name = "apple1")
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
 	}
