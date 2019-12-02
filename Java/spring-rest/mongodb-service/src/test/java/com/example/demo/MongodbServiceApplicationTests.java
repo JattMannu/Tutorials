@@ -10,4 +10,8 @@ class MongodbServiceApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void findAll(){
+	}
+
 }

@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://simmi1:simmi1@ds012889.mlab.com:12889/rubbish?retryWrites=false
+#      host: ds012889.mlab.com
+#      port: 12889
+#      username: simmi1
+#      password: simmi1
+#      database: rubbish
+
+

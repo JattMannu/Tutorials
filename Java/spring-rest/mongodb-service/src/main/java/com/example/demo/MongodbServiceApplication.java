@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.configuration.ProfileManager;
 import com.example.demo.repository.ResumeRepository;
 import jdk.jfr.Enabled;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 public class MongodbServiceApplication {
 
-	@Autowired
-	private ResumeRepository repository;
+//	@Autowired
+//	private ResumeRepository repository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(MongodbServiceApplication.class, args);

@@ -1,4 +1,10 @@
-
 server:
   port: 8084
+
+spring:
+  application:
+    name: mongodb-service
+  data:
+    mongodb:
+      uri: mongodb://simmi1:simmi1@ds012889.mlab.com:12889/rubbish?retryWrites=false
 
