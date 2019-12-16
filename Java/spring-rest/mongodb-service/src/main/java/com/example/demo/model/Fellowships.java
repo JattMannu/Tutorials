@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 public class Fellowships {
 
     @Id
@@ -14,7 +15,7 @@ public class Fellowships {
 
     private String label;
 
-    private List<Fellowship> fellowships;
+    private List<Fellowship> list;
 
     @Data
     @AllArgsConstructor
@@ -22,7 +23,4 @@ public class Fellowships {
         private String name;
     }
 
-    public Fellowships(long id) {
-        this.id = id;
-    }
 }

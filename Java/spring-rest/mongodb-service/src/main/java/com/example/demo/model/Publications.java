@@ -4,22 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class Awards {
+public class Publications {
 
     @Id
     private long id;
-
     private String label;
-    private List<Award> list;
+    private List<Publication> list;
 
     @Data
     @AllArgsConstructor
-    public class Award{
-        private String name;
+    public class Publication{
+        private String description;
+    }
+
+    public Publications(long id) {
+        this.id = id;
     }
 }

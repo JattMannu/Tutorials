@@ -14,17 +14,13 @@ public class Skills {
     @Id
     private long id;
     private String label;
-    private List<Skill> skills;
+    private List<Skill> list;
 
     @Data
     @AllArgsConstructor
     public class  Skill{
         private String url;
         private String skill;
-    }
-
-    public Skills(long id) {
-        this.id = id;
     }
 }
 

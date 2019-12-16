@@ -4,14 +4,11 @@ import com.example.demo.configuration.ProfileManager;
 import com.example.demo.model.*;
 import com.example.demo.repository.ResumeRepository;
 import com.example.demo.service.*;
-import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.BsonDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -20,7 +17,6 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +33,10 @@ class LoadDatabase {
     @Qualifier("resumeFile")
     private File resourceFile;
 
-    @Bean
+    @Autowired
+    private BsonDocument bsonDocument;
+
+    @Bean()
     CommandLineRunner initDatabase(ResumeRepository repository) {
         return args -> {
             log.info("Preloading " + repository.save(new Resume(1, "Bilbo Baggins", "burglar", new PersonalProfile(1, "asd"))));
@@ -88,19 +87,15 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initSkills(SkillsService service) throws IOException {
 
-        BsonDocument doc = BsonDocument.parse(Files.readString(resourceFile.toPath()));
-        List<Skills.Skill> skills_list = new LinkedList<>();
+        BsonDocument doc = bsonDocument.getDocument("skills");
 
-        Skills skills = new Skills(1);
+        Skills skills = new Skills(1, doc.getString("title").getValue(),new LinkedList<>());
 
-        String label = doc.getDocument("skills").getString("title").getValue();
-        skills.setLabel(label);
 
-        doc.getDocument("skills").getArray("data").forEach(bsonValue -> {
+        doc.getArray("data").forEach(bsonValue -> {
             String url = bsonValue.asDocument().getString("url").getValue();
             String skill = bsonValue.asDocument().getString("skill").getValue();
-            skills_list.add(skills.new Skill(url, skill));
-            skills.setSkills(skills_list);
+            skills.getList().add(skills.new Skill(url, skill));
         });
 
         return new CommandLineRunner() {
@@ -117,15 +112,10 @@ class LoadDatabase {
 
         BsonDocument doc = BsonDocument.parse(Files.readString(resourceFile.toPath())).getDocument("awards");
 
-        List<Awards.Award> awardList = new LinkedList<>();
-        Awards awards = new Awards(1);
-
-        String label = doc.getString("title").getValue();
-        awards.setLabel(label);
+        Awards awards = new Awards(1, doc.getString("title").getValue(), new LinkedList<>());
 
         doc.getArray("data").forEach(bsonValue -> {
-            awardList.add(awards.new Award(bsonValue.asString().getValue()));
-            awards.setAwards(awardList);
+            awards.getList().add(awards.new Award(bsonValue.asString().getValue()));
         });
 
         return args -> log.info("Preloading " + service.save(awards));
@@ -137,16 +127,29 @@ class LoadDatabase {
 
         BsonDocument doc = BsonDocument.parse(Files.readString(resourceFile.toPath())).getDocument("fellowships");
 
-        List<Fellowships.Fellowship> fellowshipList = new LinkedList<>();
-        Fellowships fellowships = new Fellowships(1);
-        fellowships.setLabel(doc.getString("title").getValue());
+        Fellowships fellowships = new Fellowships(1, doc.getString("title").getValue(), new LinkedList<>());
 
         doc.getArray("data").forEach(bsonValue -> {
-            fellowshipList.add(fellowships.new Fellowship(bsonValue.asString().getValue()));
-            fellowships.setFellowships(fellowshipList);
+            fellowships.getList().add(fellowships.new Fellowship(bsonValue.asString().getValue()));
         });
 
         return args -> log.info("Preloading " + service.save(fellowships));
+    }
+
+    @Bean
+    CommandLineRunner initPublications(PublicationsService service) throws IOException {
+
+        BsonDocument doc = BsonDocument.parse(Files.readString(resourceFile.toPath())).getDocument("publications");
+
+        Publications publications = new Publications(1);
+        publications.setLabel(doc.getString("title").getValue());
+        publications.setList(new LinkedList<>());
+
+        doc.getArray("data").forEach(bsonValue -> {
+            publications.getList().add(publications.new Publication(bsonValue.asString().getValue()));
+        });
+
+        return args -> log.info("Preloading " + service.save(publications));
     }
 
 
@@ -156,7 +159,6 @@ class LoadDatabase {
             profileManager.getActiveProfiles();
         };
     }
-
 
 
 //    @Bean
@@ -180,5 +182,10 @@ class LoadDatabase {
         return cpr.getFile();
     }
 
+
+    @Bean
+    BsonDocument getBsonDocument(@Qualifier("resumeFile") File file) throws IOException  {
+        return BsonDocument.parse(Files.readString(file.toPath()));
+    }
 
 }
