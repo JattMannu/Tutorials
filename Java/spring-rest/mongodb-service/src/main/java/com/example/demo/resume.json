@@ -1,0 +1,247 @@
+{
+  "name": "Dr. Surinder Pal Kaur",
+  "title": "Postdoctoral Fellow",
+  "currentWorkplace": [
+    "Computational Chemistry Laboratory",
+    "Department of Chemistry",
+    "Indian Institute of Technology Ropar",
+    "Rupnagar, Punjab, 140001"
+  ],
+  "phone": "+91 9927610824",
+  "email": "simmi.msc7@gmail.com",
+  "website": "surinder.me",
+  "personalProfile": {
+    "title": "Personal Profile",
+    "data": "I am working as a postdoctoral fellow in Indian Institute of Technology Ropar, India. I have successfully defended my Ph.D. thesis entitled \u201cComputational studies of selected gas hydrates and hydrate melts\u201d under the supervision of Dr. C. N. Ramachandran. My areas of expertize are computational chemistry, quantum chemical studies, electronic structure properties of chemical systems, energy storage and transportation materials, weak interactions, vibrational Raman spectroscopy, nuclear magnetic resonance spectroscopy, classical molecular dynamics"
+  },
+  "researchExperience": {
+    "title": "Research Experience",
+    "data": [
+      {
+        "title": "Postdoctoral Fellow",
+        "subTitle2": "Dr. T. J. Dhilip Kumar (Associate Professor and Head), IIT-RPR",
+        "subTitle1": "Structure and Properties of Novel Transition Metal Dichalcogenides Nano Sheets"
+      },
+      {
+        "title": "Ph.D.",
+        "subTitle2": "Dr. Ramachandran C. N. (Assistant Professor), IITR",
+        "subTitle1": "Computation studies of selected gas hydrates and hydrate melts",
+        "points": [
+          "Quantum chemical techniques were used to understand the electronic properties of gas hydrates and variation in the vibrational Raman stretching frequencies and nuclear magnetic resonance frequencies of the guest species with a change in the chemical environment.",
+          "For electronic studies, the lowest energy single and fused host water cages were used which were designed by using strong weak hydrogen bond (SWB) and strong weak effective hydrogen bond (SWEB) models.",
+          "Investigated the role of weak interactions on the stability of hydrate structures.",
+          "Evolution of dissolved gases from the CH4-N2-CO2-H2O liquid phase which has a subsequent effect on the formation of new hydrate was studied by applying classical molecular dynamics simulations."
+        ]
+      },
+      {
+        "title": "M.Sc.",
+        "subTitle2": "Dr. Harsh Manchanda (Associate Professor and Head), NITJ",
+        "subTitle1": "Volumetric Properties of Trisodium Citrate and Tripotassium Citrate in Water and in Aqueous Solutions of N-acetyl Glycine",
+        "points": [
+          "Measured the densities and speed of sound for trisodium citrate and tripotassium citrate in aqueous solutions of N-acetyl glycine at various temperatures.",
+          "Evaluated different parameters such as apparent molar volume, limiting apparent molar volume, transfer volume, partial molar expansibility from the density data.",
+          "Pair and triple pair interaction coefficients were calculated from transfer parameters.",
+          "Ion-ion and ion-solvent interactions were investigated."
+        ]
+      },
+      {
+        "title": "Summer Research Project",
+        "subTitle2": "Dr. Arvind Kumar (Principle Scientist), CSMCRI Bhavnagar",
+        "subTitle1": "Effect of EGMME on the Micellization Behavior of Tx-100 in Aqueous Medium",
+        "points": [
+          "Studied the micellization behavior of ionic liquid (Tx-100) in the presence of ethylene glycol monomethyl ether (EGMME) at various temperatures.",
+          "Investigated surface interface interactions before and after micellization"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Key Skills",
+    "data": [
+      {
+        "url": "https://en.wikipedia.org/wiki/C_(programming_language)",
+        "skill": "C"
+      },
+      {
+        "url": "https://www.vasp.at/index.php/about-vasp/59-about-vasp",
+        "skill": "VASP"
+      },
+      {
+        "url": "",
+        "skill": "Gaussian09"
+      },
+      {
+        "url": "",
+        "skill": "NWChem"
+      },
+      {
+        "url": "",
+        "skill": "GROMACS"
+      },
+      {
+        "url": "",
+        "skill": "Psi4"
+      },
+      {
+        "url": "",
+        "skill": "GaussView"
+      },
+      {
+        "url": "",
+        "skill": "GaussSum"
+      },
+      {
+        "url": "",
+        "skill": "GNU Plot"
+      },
+      {
+        "url": "",
+        "skill": "Chemcraft"
+      },
+      {
+        "url": "",
+        "skill": "Origin"
+      },
+      {
+        "url": "",
+        "skill": "Libre's Office"
+      },
+      {
+        "url": "",
+        "skill": "Microsoft Office"
+      },
+      {
+        "url": "",
+        "skill": "Psi4"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Density_meter",
+        "skill": "Density meter"
+      },
+      {
+        "url": "",
+        "skill": "Surface tensiometer"
+      },
+      {
+        "url": "",
+        "skill": "UV-Vis spectrophotometer"
+      },
+      {
+        "url": "",
+        "skill": "Fluorescence spectrophotometer"
+      }
+    ]
+  },
+  "awards": {
+    "title": "Awards",
+    "data": [
+      "2013 Qualified Graduate Aptitude Test in Engineering (GATE). GATE is an all India entrance examination conducted jointly by IISC and IITs for Ph.D., M. Tech and PSU admissions."
+    ]
+  },
+  "fellowships": {
+    "title": "Fellowships",
+    "data": [
+      "2015-2018 Senior Research Fellowship, from Ministry of Human Resource and Development (MHRD), Government of India.",
+      "2013-2015 Junior Research Fellowship, from Ministry of Human Resource and Development (MHRD), Government of India."
+    ]
+  },
+  "publications": {
+    "title": "Publications",
+    "data": [
+      "S. P. Kaur, K. S. Sujith and C. N. Ramachandran; Formation of nanobubble and its effect on the structural ordering of water in CH4-N2-CO2-H2O mixture. Phys. Chem. Chem. Phys. 2018, 20, 9157-9166.",
+      "S. P. Kaur and C. N. Ramachandran; Host-Guest and Guest-Guest Interactions in Noble Gas Hydrates. Mol. Phys. 2018, 1, 54-63.",
+      "S. P. Kaur and C. N. Ramachandran; Effect of multiple and adjacent cage occupancies on host-guest interaction and NMR chemical shifts in gas hydrates. Comp. Theor. Chem. 2016, 1092, 57-67.",
+      "S. P. Kaur and C. N. Ramachandran; Hydrogen-Tetrahydrofuran mixed hydrates: A computational study. Int. J. Hydrogen Energy. 2018, 43, 19559-19566.",
+      "V. Shilpi, S. P. Kaur and C. N. Ramachandran; Revisiting the structural pattern and stability of (H2O)20 clusters using the dispersion corrected density functional method. Chem. Phys. Lett. 2015, 626, 39-42.",
+      "V. Shilpi, S. P. Kaur and C. N. Ramachandran; Density functional studies of fused dodecahedral and irregular-dodecahedral water cages. RSC Adv. 2015, 5, 74270-74273.",
+      "H. Kumar, K. Kaur, S. P. Kaur and M. Singla; Studies of volumetric and acoustic properties of trisodium citrate and tripottassium citrate in aqueous solutions of N-acetyl glycine at different temperatures. J. Chem. Thermo. 2013, 59, 173-181."
+    ]
+  },
+  "workshops": {
+    "title": "Workshops",
+    "data": [
+      "Attended an ACS on Campus workshop which was held at Indian Institute of Technology Roorkee in February, 2018.",
+      "Attended an USPEX 8th workshop which was held at Shiv Nadar University Noida in January, 2015.",
+      "Attended Chemistry with computers symposium which was held at IIIT Hyderabad in February, 2014."
+    ]
+  },
+  "conferences": {
+    "title": "Conferences",
+    "data": [
+      "Presented a poster entitled \u201cEffect of cage occupancy on host-guest interaction and spectral properties of guest molecules in fused water cages\u201d at 15th Indian Theoretical Chemistry Symposium (TCS) held at Hyderabad in December, 2017.",
+      "Presented a poster entitled \u201cEffect of cage occupancy on spectral properties of guest molecules in fused cages\u201d at Chemical Research Society of India (CRSI) symposium held at Panjab University Chandigarh in February, 2016"
+    ]
+  },
+  "workExperience": {
+    "title": "Work Experience",
+    "data": [
+      {
+        "subTitle1": "2013-2015",
+        "title": "Teaching Assistant Indian Institute of Technology Roorkee",
+        "points": [
+          "C-programming laboratory demonstration to M. Tech students.",
+          "Organic Chemistry laboratory demonstration to M. Sc. students.",
+          "Physical Chemistry laboratory demonstration to M. Sc. students.",
+          "Computational Chemistry laboratory demonstration to M. Sc. students.",
+          "Tutorial courses for B. Tech students."
+        ]
+      }
+    ]
+  },
+  "languangues": {
+    "title": "Languangues",
+    "data": [
+      "English",
+      "Hindi",
+      "Punjabi"
+    ]
+  },
+  "references": {
+    "title": "References",
+    "data": [
+      {
+        "title": "Dr. T. J. Dhilip Kumar",
+        "subTitle1": "Associate Professor and Head",
+        "subTitle2": "Department of Chemistry<br>Indian Institute of Technology Ropar<br>Punjab, India, 140001<br>Phone: +91 1881 242150<br>Email: dhilip@iitrpr.ac.in"
+      },
+      {
+        "title": "Dr. C. N. Ramachandran",
+        "subTitle1": "Assistant Professor",
+        "subTitle2": "Department of Chemistry<br>Indian Institute of Technology Roorkee<br>Roorkee, Uttarakhand, India, 247667<br>Phone: + 91 1332 284773<br>Email: ramcnfcy@iitr.ac.in"
+      },
+      {
+        "title": "Dr. P. Jeevanadam",
+        "subTitle1": "Associate Professor",
+        "subTitle2": "Department of Chemistry<br>Indian Institute of Technology Roorkee<br>Roorkee, Uttarakhand, India, 247667<br>Phone: + 91 1332 285444<br>Email: jeevafcy@iitr.ac.in"
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "data": [
+      {
+        "title": "Postdoctoral Fellow",
+        "subTitle1": "Indian Institute of Technology Ropar, India",
+        "subTitle2": "November 2018-Till Date"
+      },
+      {
+        "title": "Ph.D.in Theoretical Chemistry",
+        "subTitle1": "Indian Institute of Technology Roorkee, India",
+        "subTitle2": "2013 - 2018",
+        "subTitle3": "Thesis Title: \u201cComputational Studies of Selected Gas Hydrates and Hydrate Melts\u201d Supervisor: Dr.Ramachandran C.N."
+      },
+      {
+        "title": "M.Sc.in Chemistry",
+        "subTitle1": "Dr.B.R.Ambedkar National Institute of Technology Jalandhar, India",
+        "subTitle2": "2010 - 2012",
+        "subTitle3": "Thesis Title: \u201cVolumetric Properties of Trisodium Citrate and Tripotassium Citrate in Water and in Aqueous Solutions of N - acetyl Glycine\u201d"
+      },
+      {
+        "title": "B.Sc.in Chemistry",
+        "subTitle1": "Dr.B.R.Ambedkar National Institute of Technology Jalandhar, India",
+        "subTitle2": "2007 - 2010",
+        "subTitle3": "Thesis Title: \u201cSikh National College, Banga, India Elective Subjects: Physics, Chemistry, and Mathematics"
+      }
+    ]
+  }
+}

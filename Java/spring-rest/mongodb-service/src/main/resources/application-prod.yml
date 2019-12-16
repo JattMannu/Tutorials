@@ -1,7 +1,11 @@
+server:
+  port: 80
+
 spring:
   data:
     mongodb:
-      uri: mongodb://simmi1:simmi1@ds012889.mlab.com:12889/surinderpal_resume_prod?retryWrites=false
+      uri: mongodb://simmi1:simmi1@ds012889.mlab.com:12889/rubbish?retryWrites=false
+#      uri: mongodb://simmi1:simmi1@ds012889.mlab.com:12889/surinderpal_resume_prod?retryWrites=false
 #      host: ds012889.mlab.com
 #      port: 12889
 #      username: simmi1

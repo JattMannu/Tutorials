@@ -3,7 +3,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.PersonalProfile;
 import com.example.demo.service.PersonalProfileService;
-import com.netflix.ribbon.proxy.annotation.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
