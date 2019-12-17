@@ -1,0 +1,6 @@
+ 
+ ### Accessing the H2 Console
+ ```
+ spring.h2.console.enabled=true
+ ```
+ http://localhost:8080/h2-console 
