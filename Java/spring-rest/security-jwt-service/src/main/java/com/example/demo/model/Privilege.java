@@ -1,9 +1,14 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Privilege {
 
     @Id
