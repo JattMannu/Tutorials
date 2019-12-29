@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Surinder Pal Kaur</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+
+<body>
+<p> Welcome to resume start.</p>
+
+<form action="add">
+    <input type="text" name="numb1"><br>
+    <input type="text" name="numb2"><br>
+    <input type="submit">
+</form>
+<form action="asd">
+    <input type="text" name="numb1"><br>
+    <input type="text" name="numb2"><br>
+    <input type="submit">
+</form>
+
+
+<h6 th:inline="text" >
+    [[${time_lbl}]]
+    <small th:text="${time_val}">Subtitle</small>
+</h6>
+</body>
+
+
+</html>

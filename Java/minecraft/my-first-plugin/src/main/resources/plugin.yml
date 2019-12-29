@@ -1,0 +1,4 @@
+name: My First Plugin
+version: ${project.version}
+main: demo.one.myfirstplugin.MyFirstPlugin
+api-version: 1.13
