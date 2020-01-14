@@ -1,4 +1,48 @@
-name: My First Plugin
+name: MyFirstPlugin
 version: ${project.version}
 main: demo.one.myfirstplugin.MyFirstPlugin
 api-version: 1.13
+
+commands:
+  get_stats:
+    usage: /<command>
+    description: Get Stats
+    aliases:
+      - gs
+  add_max_health:
+    usage: /<command>
+    description: Add 1 point to max health
+    aliases:
+      - amh
+      -
+  add_armour:
+    usage: /<command>
+    description: Add 1 point to armour
+    aliases:
+      - aa
+      -
+  add_attack_speed:
+    usage: /<command>
+    description: Add 1 point to attack speed
+    aliases:
+      - aas
+      -
+  add_armour_toughness:
+    usage: /<command>
+    description: Add 1 point to armour toughness
+    aliases:
+      - aat
+  add_movement_speed:
+    usage: /<command>
+    description: Add 1 point to movement speed
+
+  add_luck:
+    usage: /<command>
+    description: Add 1 point to luck
+
+  hunger_rate:
+    usage: /<command>
+    description: Makes you hungr
+
+  gui:
+    description: Opens the GUI

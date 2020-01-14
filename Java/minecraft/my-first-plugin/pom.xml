@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>My First Plugin</name>
+    <name>MyFirstPlugin</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -44,6 +44,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDirectory>${env.HOME}/buildtools/plugins</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -71,5 +84,12 @@
             <version>1.15-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.spigotmc</groupId>-->
+        <!--            <artifactId>spigot-api</artifactId>-->
+        <!--            <version>1.15.1</version>-->
+        <!--            <scope>system</scope>-->
+        <!--            <systemPath>/home/mannu/buildtools/spigot-1.15.1.jar</systemPath>-->
+        <!--        </dependency>-->
     </dependencies>
 </project>
