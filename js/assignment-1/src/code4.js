@@ -27,4 +27,4 @@ function solution(str) {
 }
 
 //console.log(solution("bbbaacdafe"))
-console.log(solution("bba"))
+console.log(solution("bbbaacdafe"))

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var h = 100;
+        var w = 350;
+        var padding = 5
+
+        var dataset = [
+            { "month": 10, "sales": 20 },
+            { "month": 20, "sales": 13 },
+            { "month": 30, "sales": 20 },
+            { "month": 40, "sales": 23 },
+            { "month": 50, "sales": 12 },
+            { "month": 60, "sales": 11 },
+            { "month": 70, "sales": 3 },
+            { "month": 80, "sales": 4 },
+            { "month": 90, "sales": 21 },
+            { "month": 100, "sales": 17 },
+            { "month": 110, "sales": 19 },
+        ];
+
+        function salesKPI(d) {
+            if (d <= 15) return "#33cc33"
+
+            return "#666666"
+        }
+
+        function showMinMax(ds, col, val, type) {
+            var max = d3.max(ds, d => d[col])
+            var min = d3.min(ds, d => d[col])
+            if (type == "minmax" && (val == max || val == min)) {
+                return val;
+            } else {
+                if (type == 'all') {
+                    return val;
+                }
+            }
+        }
+
+        //Create your svg
+        var svg = d3.select("body").append("svg").attr({
+            width: w,
+            height: h,
+            padding: 10
+        });
+
+        var dots = svg.selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr({
+                cx: d => d.month * 3,
+                cy: d => h - d.sales - padding,
+                r: 5,
+                fill: d => salesKPI(d.sales)
+            })
+
+
+        //add labels
+        var labels = svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(d => showMinMax(dataset, "sales", d.sales, 'all')) // all or minmax
+            .attr({
+                x: d => d.month * 3 - 7,
+                y: d => h - d.sales - 11,
+                "font-size": "12px",
+                "font-family": "sans-serif",
+                "fill": "#666666",
+                "text-anchor": "start"
+            })
+
+
+    </script>
+</body>
+
+</html>
