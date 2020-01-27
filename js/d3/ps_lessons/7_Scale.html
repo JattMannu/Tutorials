@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var h = 100;
+        var w = 350;
+        var padding = 5
+
+
+        var dataset;
+        d3.csv("data.csv", function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data)
+                dataset = data;
+            }
+            build_dots(data);
+            get_total(data);
+        })
+
+        function salesKPI(d) {
+            if (d <= 15) return "#33cc33"
+            return "#666666"
+        }
+        function showMinMax(ds, col, val, type) {
+            var max = d3.max(ds, d => d[col] * 1)
+            var min = d3.min(ds, d => d[col] * 1)
+            if (type == "minmax" && (val == max || val == min)) {
+                return val;
+            } else {
+                if (type == 'all') {
+                    return val;
+                }
+            }
+        }
+        function build_dots(dataset) {
+
+            //Create your svg
+            var svg = d3.select("body").append("svg").attr({
+                width: w,
+                height: h,
+                padding: 10
+            });
+            //dataset.forEach(e => console.log(e))
+            var a = d3.max(dataset, d => d.month * 1)
+            console.log(d3.min(dataset, d => d.month * 1))
+            console.log(d3.max(dataset, d => d.month * 1))
+
+
+
+            var yScale = d3.scale.linear()
+                .domain([
+                    0,
+                    d3.max(dataset, d => d.sales * 1)
+                ]).range([h - 10, 10]);
+
+
+            var xScale = d3.scale.linear()
+                .domain([
+                    d3.min(dataset, d => d.month * 1),
+                    d3.max(dataset, d => d.month * 1)
+                ]).range([10, w - 20]);
+
+            var dots = svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle")
+                .attr({
+                    cx: d => xScale(d.month),
+                    cy: d => yScale(d.sales),
+                    r: 5,
+                    fill: d => salesKPI(d.sales)
+                })
+
+
+            //add labels
+            var labels = svg.selectAll("text")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .text(d => showMinMax(dataset, "sales", d.sales, 'all')) // all or minmax
+                .attr({
+                    x: d => xScale(d.month) + 7,
+                    y: d => yScale(d.sales) +4 ,
+                    "font-size": "12px",
+                    "font-family": "sans-serif",
+                    "fill": "#666666",
+                    "text-anchor": "start"
+                })
+        }
+
+        function get_total(dataset) {
+            //Create your svg
+            var t = d3.select("body").append("table")
+
+            var total = 0;
+            dataset.forEach(element => {
+                total += element.sales * 1
+            });
+            var avg = total / dataset.length;
+
+            var metrics = []
+            metrics.push("Sales Total :" + total)
+            metrics.push("Sales Avg :" + avg.toFixed(2))
+
+            var tr = t.selectAll("tr")
+                .data(metrics)
+                .enter()
+                .append("tr")
+                .append('td')
+                .text(d => d);
+        }
+
+        function build_lines(dataset) {
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
