@@ -1,6 +1,6 @@
 console.log("9_Scatter_plot");
 
-function ready(dataset) {
+function ready9(dataset) {
 
     const margin = { top: 80, right: 80, bottom: 40, left: 80 }
     const width = 500 - margin.right - margin.left;
@@ -108,5 +108,5 @@ d3.json("./data/xy.json", function (err, data) {
     } else {
         console.log(data)
     }
-    ready(data);
+    ready9(data);
 })
