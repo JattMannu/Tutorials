@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Interactive Map</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Yanone+Kaffeesatz:200" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF;
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            font-weight: 600;
+            /* font-size: 17px; */
+        }
+
+        #map-holder {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        svg rect {
+            fill: rgba(255, 250, 250, 0.596);
+            /* map background colour */
+        }
+
+        .country {
+            /* fill: rgb(168, 168, 168); */
+            /* country colour */
+            stroke: #2A2C39;
+            /* country border colour */
+            stroke-width: 0.1;
+            /* country border width */
+        }
+
+        .countryName {
+            fill: #000;
+            /* country label text colour */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="map-holder"></div>
+    <script type="text/javascript">
+
+        // DEFINE VARIABLES
+        // Define size of map group
+        // Full world map is 2:1 ratio
+        // Using 12:5 because we will crop top and bottom of map
+        w = 3000;
+        h = 1250;
+
+
+        // DEFINE FUNCTIONS/OBJECTS
+        // Define map projection
+        var projection = d3
+            .geoEquirectangular()
+            .center([0, 15]) // set centre to further North as we are cropping more off bottom of map
+            .scale([w / (2 * Math.PI)]) // scale to fit group width
+            .translate([w / 2, h / 2]) // ensure centred in group
+            ;
+
+        // Define map path
+        var path = d3
+            .geoPath()
+            .projection(projection)
+            ;
+
+        // Create function to apply zoom to countriesGroup
+        function zoomed() {
+            t = d3
+                .event
+                .transform
+
+            countriesGroup
+                .attr("transform", "translate(" + [t.x, t.y] + ")scale(" + t.k + ")");
+                console.log("scale"+t.k)
+
+            countryLabels
+                .style("font-size", 21-t.k);
+
+        }
+
+        // Define map zoom behaviour
+        var zoom = d3
+            .zoom()
+            .on("zoom", zoomed)
+            ;
+
+        function getTextBox(selection) {
+            selection
+                .each(function (d) {
+                    d.bbox = this
+                        .getBBox();
+                })
+                ;
+        }
+
+
+        // create an SVG
+        var svg = d3
+            .select("#map-holder")
+            .append("svg")
+            // set to the same size as the "map-holder" div
+            .attr("width", $("#map-holder").width())
+            .attr("height", $("#map-holder").height())
+            // add zoom functionality
+            .call(zoom)
+            ;
+
+
+        // get map data
+        d3.json(
+            "./data/custom.geo.json",
+            function (json) {
+                d3.csv("./data/wuhan.csv", function (error, wuhan) {
+
+                    let infectedCountries = wuhan.map(e => e.Country)
+                    //Bind data and create one path per GeoJSON feature
+                    countriesGroup = svg.append("g").attr("id", "map");
+                    // add a background rectangle
+                    countriesGroup
+                        .append("rect")
+                        .attr("x", 0)
+                        .attr("y", 0)
+                        .attr("width", w)
+                        .attr("height", h);
+
+                    // draw a path for each feature/country
+                    countries = countriesGroup
+                        .selectAll("path")
+                        .data(json.features)
+                        .enter()
+                        .append("path")
+                        .attr("d", path)
+                        .attr("id", function (d, i) {
+                            return "country" + d.properties.iso_a3;
+                        })
+                        .attr("class", "country")
+                        .style("fill", (d) => {
+                            if(infectedCountries.includes(d.properties.name)){
+                                return 'rgb(255, 100, 100)';
+                            }                            
+                            return "rgb(168, 168, 168)"
+                        })
+                        .on("mouseover", function (d) {
+                            //console.log("just had a mouseover", d.properties.name , wuhan)
+                            
+                        })
+                        .on("mouseout", function (d) {
+                           // console.log("just had a mouseout", d.properties.name,infectedCountries)
+                        })
+
+                    countryLabels = countriesGroup
+                        .selectAll("g")
+                        .data(json.features)
+                        .enter()
+                        .append("g")
+                        .attr("class", "countryLabel")
+                        .attr("id", function (d) {
+                            return "countryLabel" + d.properties.iso_a3;
+                        })
+                        .attr("transform", function (d) {
+                            return (
+                                "translate(" + path.centroid(d)[0] + "," + path.centroid(d)[1] + ")"
+                            );
+                        })
+                        .style("display", "block")
+                        .style("font-size", 21)
+                        .style("color", "black")
+                        .style("display", (d) => {
+                            //console.log(d.properties.name)
+                            if(infectedCountries.includes(d.properties.name)){
+                                return 'block';
+                            }
+                            return 'none';
+                        })
+                        
+                        
+
+                    countryLabels
+                        .append("text")
+                        .attr("class", "countryName")
+                        .style("text-anchor", "middle")
+                        .attr("dx", 0)
+                        .attr("dy", 0)
+                        .text(function (d) {
+                            return d.properties.name;
+                        })
+                    //.call(getTextBox);
+
+                    // add a background rectangle the same size as the text
+                    //     countryLabels
+                    //         .insert("rect", "text")
+                    //         .attr("class", "countryLabelBg")
+                    //         .attr("transform", function (d) {
+                    //             return "translate(" + (d.bbox.x - 2) + "," + d.bbox.y + ")";
+                    //         })
+                    //         .attr("width", function (d) {
+                    //             return d.bbox.width + 4;
+                    //         })
+                    //         .attr("height", function (d) {
+                    //             return d.bbox.height;
+                    //         });
+
+                }
+                );
+
+            }
+        );
+
+    </script>
+</body>
+
+</html>
