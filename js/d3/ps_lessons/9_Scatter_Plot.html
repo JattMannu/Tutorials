@@ -7,6 +7,7 @@
     <script src="./9_Scatter_Plot.js"></script>
     <script src="./10_SteamData.js"></script>
     <link rel="stylesheet" href="9_Scatter_Plot.css">
+    <link rel="stylesheet" href="10_SteamData.css">
 </head>
 
 <body>
@@ -22,6 +23,29 @@
 
         </div>
     </div>
+    <div>
+        <div class="popup" onclick="myFunction()">Click me to toggle the popup!
+            <span class="popuptext show" id="myPopup">A Simple Popup!</span>
+        </div>
+    </div>
+    <!-- <div>
+        <circle class="idx-0 scatter negative popup" cx="270.1145449219001" cy="0" r="20" fill="red" fill-opacity="1"
+            data-selector="480117">
+            <span class="popuptext show" id="myPopup">480117</span>
+        </circle> -->
+    <!-- <circle class="idx-0 scatter negative popup" cx="270.1145449219001" cy="0" r="3" fill="red" fill-opacity="0.7"
+            data-selector="480117">
+            <span class="popuptext show" id="myPopup">480117</span>
+        </circle> -->
+        <path class="popup" d="M 270.1145449219001 0 L 720 0" stroke="blue" stroke-width="0.5" fill="none" fill-opacity="0.7"><span class="popuptext show" id="myPopup">123</span></path>
 </body>
+
+<script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+</script>
 
 </html>
