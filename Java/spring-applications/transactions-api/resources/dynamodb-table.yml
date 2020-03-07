@@ -1,0 +1,18 @@
+Resources:
+  transactionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: transactions_table
+      AttributeDefinitions:
+        - AttributeName: account_id
+          AttributeType: S
+        - AttributeName: transaction_date
+          AttributeType: S
+      KeySchema:
+        - AttributeName: account_id
+          KeyType: HASH
+        - AttributeName: transaction_date
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
