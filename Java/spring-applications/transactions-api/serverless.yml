@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: aws-java-maven
+service: transactions-api
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -23,11 +23,16 @@ service: aws-java-maven
 provider:
   name: aws
   runtime: java8
-  region: ap-southeast-1
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: dev
+  region: ap-southeast-1
+
+iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "dynamodb:*"
+    Resource: "*"
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -51,13 +56,13 @@ provider:
 
 # you can add packaging information here
 package:
-  artifact: target/aws-java-maven-dev.jar
+  artifact: target/transactions-api-dev.jar
 
 functions:
-  test:
-    handler: com.serverless.Handler
-  hello:
-    handler: com.serverless.Handler
+  get-transactions:
+    handler: com.serverless.GetTransactionsHandler
+  post-transaction:
+    handler: com.serverless.PostTransactionsHandler
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -109,3 +114,22 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+resources:
+  Resources:
+    transactionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: transactions_table
+        AttributeDefinitions:
+          - AttributeName: account_id
+            AttributeType: S
+          - AttributeName: transaction_date
+            AttributeType: S
+        KeySchema:
+          - AttributeName: account_id
+            KeyType: HASH
+          - AttributeName: transaction_date
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
