@@ -25,7 +25,7 @@ public class DynamoDBAdapter {
 
     private DynamoDBAdapter() {
         client = AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(
-                new AwsClientBuilder.EndpointConfiguration("https://dynamodb.us-east-1.amazonaws.com", "us-east-1"))
+                new AwsClientBuilder.EndpointConfiguration("https://dynamodb.ap-southeast-1.amazonaws.com", "ap-southeast-1"))
                 .build();
         LOG.info("Created DynamoDB client");
     }

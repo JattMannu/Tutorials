@@ -28,11 +28,11 @@ provider:
   stage: dev
   region: ap-southeast-1
 
-iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "dynamodb:*"
-    Resource: "*"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource: "*"
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -61,8 +61,16 @@ package:
 functions:
   get-transactions:
     handler: com.serverless.GetTransactionsHandler
+    events:
+      - http:
+          path: /accounts/{account_id}/transactions
+          method: get
   post-transaction:
     handler: com.serverless.PostTransactionsHandler
+    events:
+      - http:
+          path: /accounts/{account_id}/transactions
+          method: post
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
