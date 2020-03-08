@@ -90,6 +90,7 @@ functions:
       - http:
           path: /presignedurls
           method: get
+          cors: true
           request:
             template:
               application/json: >
