@@ -54,10 +54,17 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
         HashMap<String, Object> returnMap = new HashMap<>();
         returnMap.put("url", url.toString());
         PreSignedURLResponse responseBody = new PreSignedURLResponse("SUCCESSFUL", returnMap);
+
+
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("X-Powered-By", "AWS Lambda & serverless");
+        headers.put("Access-Control-Allow-Origin", "*");
+        //  'Access-Control-Allow-Credentials': true,
+        // https://serverless.com/blog/cors-api-gateway-survival-guide/
         return ApiGatewayResponse.builder()
                 .setStatusCode(200)
                 .setObjectBody(responseBody)
-                .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
+                .setHeaders(headers)
                 .build();
     }
 }
