@@ -13,13 +13,13 @@ provider "aws" {
     region = var.region 
 }
 
-data "aws_ami" "aws-linux" {
+data "aws_ami" "aws_linux" {
     most_recent = true
     owners = ["amazon"]
 
     filter {
         name = "name"
-        values = ["amzn-ami-hvm"]
+        values = ["amzn-ami-hvm*"]
     }
 
     filter {
@@ -38,7 +38,7 @@ resource "aws_default_vpc" "default" {
 }
 
 resource "aws_security_group" "allow_ssh" {
-    name = "nginx_demo"
+    name = "nginx_demo_terra"
     description = "Allow ports for nginx demo"
     vpc_id = aws_default_vpc.default.id
 
@@ -64,7 +64,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "nginx" {
-  ami = data.aws_ami.aws-linux.id
+  ami = data.aws_ami.aws_linux.id
   instance_type = "t2.micro"
   key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
