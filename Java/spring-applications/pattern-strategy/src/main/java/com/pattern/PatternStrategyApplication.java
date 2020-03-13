@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 
 @SpringBootApplication
@@ -30,6 +31,9 @@ public class PatternStrategyApplication implements CommandLineRunner {
 	@Qualifier("default")
 	private Strategy strategy;
 
+	@Autowired //Via @Primary
+	private Strategy pri_strategy;
+
 	@Override
 	public void run(String... args) throws Exception {
 		ConsumerContext mark = new ConsumerContext("Mark", appleStrategy);
@@ -40,10 +44,15 @@ public class PatternStrategyApplication implements CommandLineRunner {
 
 		ConsumerContext Ali = new ConsumerContext("Ali", strategy);
 		log.info(Ali.doAction());
+
+		ConsumerContext daniel = new ConsumerContext("Daniel", pri_strategy);
+		log.info(daniel.doAction());
+
 	}
 
 	@Bean(name = "default")
+	@Primary
 	protected Strategy getStrategy(){
-		return new OrangeStrategy();
+		return new AppleStrategy();
 	}
 }
