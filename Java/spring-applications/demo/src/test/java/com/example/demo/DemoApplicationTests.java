@@ -43,7 +43,7 @@ class DemoApplicationTests {
 	void able_to_add_one_item_to_cart(){
 
 
-		ShoppingCart cart =  new ShoppingCart();
+//		ShoppingCart cart =  new ShoppingCart();
 
 	}
 }
