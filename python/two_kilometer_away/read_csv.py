@@ -8,12 +8,12 @@ with open(data_1) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader:
-        if line_count == 0:
+        if line_count == 0 :
             # Skipping the headers
             line_count += 1
         else:
             print(row[0])
-            cood = [row[0], float(row[1]), float(row[2])]
+            cood = [row[0], float(row[1]), float(row[2]),int(row[3])];
             SCHOOLS.append(cood)
             line_count += 1
 HDBs = []
@@ -21,7 +21,7 @@ with open('hdb-property-information-with-latlong-latest-resale-price.csv') as cs
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader:
-        if line_count == 0:
+        if line_count == 0 or row[3] != "3 ROOM":
             # Skipping the headers
             line_count += 1
         else:
@@ -30,10 +30,10 @@ with open('hdb-property-information-with-latlong-latest-resale-price.csv') as cs
                 HDBs.append(cood)
             line_count += 1
 
+
+
+
 import math
-
-
-
 
 # 2km = 0.02
 for school in SCHOOLS:
@@ -55,11 +55,11 @@ for school in SCHOOLS:
     school.append(resale)
 
 
-f = open('result.csv', 'w')
+f = open('result_1.csv', 'w')
 
 with f:
     writer = csv.writer(f)
-    writer.writerow(["school_name", "latitude", "longitude","avg_resale"])
+    writer.writerow(["school_name", "latitude", "longitude","vacancies","avg_resale"])
     for school in SCHOOLS:
         writer.writerow(school)
 
