@@ -20,7 +20,6 @@ public class SendEmailHandler implements RequestHandler<Map<String, Object>, Api
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("received: {}", input);
 
-
 		// Replace sender@example.com with your "From" address.
 		// This address must be verified with Amazon SES.
 		final String FROM = "manpreet@bhinder.net";

@@ -83,3 +83,7 @@ resource "aws_sns_topic_subscription" "processed_lamada_target" {
 }
 
 ```
+
+
+This make all the lambdas to have a API Gateway
+https://learn.hashicorp.com/terraform/aws/lambda-api-gateway#creating-the-lambda-function
