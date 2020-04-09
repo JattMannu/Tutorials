@@ -18,5 +18,6 @@
         <module>discovery-server</module>
         <module>mongodb-service</module>
         <module>frontend</module>
+        <module>r2dbc-config-demo</module>
     </modules>
 </project>

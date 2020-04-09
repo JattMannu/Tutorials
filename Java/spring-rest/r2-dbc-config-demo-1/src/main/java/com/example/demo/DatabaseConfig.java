@@ -8,11 +8,11 @@ import io.r2dbc.spi.ConnectionFactoryOptions;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
-import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+
+
 import java.time.Duration;
 
 import static io.r2dbc.pool.PoolingConnectionFactoryProvider.MAX_SIZE;
@@ -20,26 +20,9 @@ import static io.r2dbc.pool.PoolingConnectionFactoryProvider.VALIDATION_QUERY;
 import static io.r2dbc.spi.ConnectionFactoryOptions.*;
 
 @Configuration
-@EnableR2dbcRepositories
+//@EnableR2dbcRepositories
 @EnableTransactionManagement
-public class DatabaseConfig extends AbstractR2dbcConfiguration {
-
-//    @Override
-//    @Bean
-//    public ConnectionFactory connectionFactory() {c
-//        return new PostgresqlConnectionFactory(
-//                PostgresqlConnectionConfiguration.builder()
-//                        .host("localhost")
-//                        .port(5432)
-//                        .username("postgres")
-//                        .password("mysecretpassword")
-//                        .database("myDatabase")
-//                        .build());
-//    }
-//    }
-
-    // https://github.com/swri-robotics/bag-database/blob/master/src/main/resources/db/changelog/db.changelog-master.yaml
-    // https://github.com/kissaten/liquibase-example/blob/master/src/main/resources/db/changelog/db.changelog-master.yaml
+public class DatabaseConfig {
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -68,13 +51,13 @@ public class DatabaseConfig extends AbstractR2dbcConfiguration {
 
 
     //https://www.baeldung.com/spring-boot-failed-to-configure-data-source
-        @Bean
-        public DataSource datasource() {
-            return DataSourceBuilder.create()
-                       .driverClassName("org.postgresql.Driver")
-                    .url("jdbc:postgresql://localhost:5432/demo")
-                    .username("admin")
-                    .password("admin")
-                    .build();
-        }
+    @Bean
+    public DataSource datasource() {
+        return DataSourceBuilder.create()
+                .driverClassName("org.postgresql.Driver")
+                .url("jdbc:postgresql://localhost:5432/demo")
+                .username("admin")
+                .password("admin")
+                .build();
     }
+}

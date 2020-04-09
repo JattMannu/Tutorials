@@ -16,4 +16,26 @@
                     defaultValueBoolean="true"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="2" author="Manpreet">
+        <createTable tableName="books">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Manpreet">
+        <createTable tableName="book">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
