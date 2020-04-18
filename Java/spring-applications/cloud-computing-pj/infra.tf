@@ -158,17 +158,19 @@ resource "aws_lambda_function" "get_pre_signed_url" {
     aws_cloudwatch_log_group.cs5224_get_pre_signed_url]
 }
 
-# API Gateway
+//Used to Create API Gateway
 resource "aws_api_gateway_rest_api" "api" {
   name = "myapi"
 }
 
+//Used to create a Route in the API gateway
 resource "aws_api_gateway_resource" "resource" {
   parent_id = aws_api_gateway_rest_api.api.root_resource_id
   rest_api_id = aws_api_gateway_rest_api.api.id
   path_part = "get_pre_signed_url"
 }
 
+//Used to create a API in the API gateway
 resource "aws_api_gateway_method" "method" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   resource_id = aws_api_gateway_resource.resource.id
@@ -177,6 +179,7 @@ resource "aws_api_gateway_method" "method" {
 
 }
 
+//Used to link the Lambda "get_pre_signed_url" to the API Gateway
 resource "aws_api_gateway_integration" "integration" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   resource_id = aws_api_gateway_resource.resource.id
@@ -185,7 +188,6 @@ resource "aws_api_gateway_integration" "integration" {
   type = "AWS_PROXY"
   uri = aws_lambda_function.get_pre_signed_url.invoke_arn
 }
-
 
 
 resource "aws_api_gateway_deployment" "deplyoment" {
@@ -210,10 +212,12 @@ resource "aws_lambda_permission" "apigw" {
   source_arn = "arn:aws:execute-api:${var.region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
 }
 
+//Used to print out the get_pre_signed_url's link/url
 output "base_url" {
   value = aws_api_gateway_deployment.deplyoment.invoke_url
 }
 
+//Used to create S3 Bucket
 resource "aws_s3_bucket" "bucket" {
   acl = "public-read-write"
   force_destroy = true
@@ -232,6 +236,7 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
+//Used to create folder "toProcess" in the S3 bucket
 resource "aws_s3_bucket_object" "toProcess" {
   bucket = aws_s3_bucket.bucket.id
   acl = "public-read"
@@ -239,6 +244,7 @@ resource "aws_s3_bucket_object" "toProcess" {
   source = "/dev/null"
 }
 
+//Used to create folder "processed" in the S3 bucket
 resource "aws_s3_bucket_object" "processed" {
   bucket = aws_s3_bucket.bucket.id
   acl = "public-read"
@@ -246,7 +252,7 @@ resource "aws_s3_bucket_object" "processed" {
   source = "/dev/null"
 }
 
-
+//Used to create a SQS and Allow S3 bucket to send message to the Queue
 resource "aws_sqs_queue" "queue" {
   name = "s3-event-notification-queue"
 
@@ -262,12 +268,19 @@ resource "aws_sqs_queue" "queue" {
       "Condition": {
         "ArnEquals": { "aws:SourceArn": "${aws_s3_bucket.bucket.arn}" }
       }
+    },
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:ap-southeast-1:472894326578:s3-event-notification-queue"
     }
   ]
 }
 POLICY
 }
 
+//Created a SNS topic
 resource "aws_sns_topic" "topic_toProcess" {
   name = "s3-event-notification-toProcess"
 
@@ -287,6 +300,7 @@ resource "aws_sns_topic" "topic_toProcess" {
 POLICY
 }
 
+//Created a SNS topic
 resource "aws_sns_topic" "topic_processed" {
   name = "s3-event-notification-processed"
 
@@ -306,6 +320,7 @@ resource "aws_sns_topic" "topic_processed" {
 POLICY
 }
 
+//Used to send notification to the SNS topics
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -324,20 +339,33 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   }
 }
 
+//Used to Link Lambda "send_email" to SNS topic "topic_processed"
 resource "aws_sns_topic_subscription" "mapping-processed-email" {
   topic_arn = aws_sns_topic.topic_processed.arn
   protocol = "lambda"
   endpoint = aws_lambda_function.send_email.arn
 }
 
+//Used to Link Lambda "send_sms" to SNS topic "topic_processed"
 resource "aws_sns_topic_subscription" "mapping-processed-sms" {
   topic_arn = aws_sns_topic.topic_processed.arn
   protocol = "lambda"
   endpoint = aws_lambda_function.send_sms.arn
 }
 
+//Used to Link SQS "queue" to SNS topic "topic_toProcess"
+resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
+  topic_arn = aws_sns_topic.topic_toProcess.arn
+  protocol  = "sqs"
+  endpoint  = aws_sqs_queue.queue.arn
+}
 
 ### Added Logging for Lambdas
+resource "aws_cloudwatch_log_group" "cs5224_test" {
+  name = "/aws/lambda/cs5224_test"
+  retention_in_days = 14
+}
+
 resource "aws_cloudwatch_log_group" "cs5224_send_email" {
   name = "/aws/lambda/cs5224-send-email"
   retention_in_days = 14
