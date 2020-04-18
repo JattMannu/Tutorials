@@ -28,7 +28,13 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
 
         Map<String, String> queryStringParameters = (Map<String, String>) input.get("queryStringParameters");
         LOG.info("input: {}", input);
-        objectKey = String.format("%s/%s" , queryStringParameters.get("folder"),queryStringParameters.get("file"));
+        objectKey = String.format("%s/%s", queryStringParameters.get("folder"), queryStringParameters.get("file"));
+
+        String param_email = queryStringParameters.get("email");
+        String param_telephone = queryStringParameters.get("telephone");
+        LOG.info("email: {}", param_email);
+        LOG.info("telephone: {}", param_telephone);
+
         LOG.info("objectKey: {}", objectKey);
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(clientRegion)
@@ -47,8 +53,8 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
                         .withMethod(HttpMethod.PUT)
                         .withExpiration(expiration);
 
-        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "email", "manpreet@bhinder.net");
-        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "telephone", "+6597121419");
+        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "email", param_email);
+        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "telephone", param_telephone);
 
         URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
 

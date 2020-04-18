@@ -13,6 +13,7 @@ provider "aws" {
 
 data "aws_caller_identity" "current" {}
 
+
 resource "aws_iam_role" "iam_for_lambda_custom" {
   name = "iam_for_lambda_custom"
 
@@ -32,6 +33,7 @@ resource "aws_iam_role" "iam_for_lambda_custom" {
 }
 EOF
 }
+
 
 resource "aws_lambda_function" "test_lambda" {
   filename = "./target/cloud-computing-pj-dev.jar"
@@ -58,7 +60,8 @@ resource "aws_lambda_function" "test_lambda" {
   }
   depends_on = [
     aws_iam_role_policy_attachment.lambda_logs,
-    aws_cloudwatch_log_group.cs5224_send_sms]
+    aws_cloudwatch_log_group.cs5224_test,
+    aws_iam_role_policy_attachment.lambda_s3_full_access]
 }
 
 resource "aws_lambda_function" "send_email" {
@@ -201,14 +204,14 @@ resource "aws_api_gateway_deployment" "deplyoment" {
 
 
 resource "aws_lambda_permission" "apigw" {
-  statement_id  = "AllowAPIGatewayInvoke"
-  action        = "lambda:InvokeFunction"
+  statement_id = "AllowAPIGatewayInvoke"
+  action = "lambda:InvokeFunction"
   function_name = aws_lambda_function.get_pre_signed_url.function_name
-  principal     = "apigateway.amazonaws.com"
+  principal = "apigateway.amazonaws.com"
 
   # The "/*/*" portion grants access from any method on any resource
   # within the API Gateway REST API.
-//  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
+  //  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
   source_arn = "arn:aws:execute-api:${var.region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
 }
 
@@ -234,6 +237,25 @@ resource "aws_s3_bucket" "bucket" {
       "DELETE",
       "HEAD"]
   }
+}
+
+resource "aws_s3_bucket_policy" "b" {
+  bucket = aws_s3_bucket.bucket.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddPerm",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "${aws_s3_bucket.bucket.arn}/*"
+        }
+    ]
+}
+POLICY
 }
 
 //Used to create folder "toProcess" in the S3 bucket
@@ -356,8 +378,8 @@ resource "aws_sns_topic_subscription" "mapping-processed-sms" {
 //Used to Link SQS "queue" to SNS topic "topic_toProcess"
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
   topic_arn = aws_sns_topic.topic_toProcess.arn
-  protocol  = "sqs"
-  endpoint  = aws_sqs_queue.queue.arn
+  protocol = "sqs"
+  endpoint = aws_sqs_queue.queue.arn
 }
 
 ### Added Logging for Lambdas
@@ -427,6 +449,33 @@ resource "aws_iam_policy" "lambda_sms" {
 EOF
 }
 
+//Used to give permission to access all the S3 buckets
+resource "aws_iam_policy" "lambda_s3_full_access" {
+  name = "lambda_s3_full_access"
+  path = "/"
+  description = "IAM policy for S3 from a lambda"
+
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_s3_full_access" {
+  role = aws_iam_role.iam_for_lambda_custom.name
+  policy_arn = aws_iam_policy.lambda_s3_full_access.arn
+}
+
+
 
 resource "aws_lambda_permission" "with_sns_send_email" {
   statement_id = "AllowExecutionFromSNS"
@@ -453,3 +502,7 @@ resource "aws_iam_role_policy_attachment" "lambda_sms" {
   role = aws_iam_role.iam_for_lambda_custom.name
   policy_arn = aws_iam_policy.lambda_sms.arn
 }
+
+
+
+
