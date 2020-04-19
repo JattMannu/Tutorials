@@ -53,6 +53,12 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
                         .withMethod(HttpMethod.PUT)
                         .withExpiration(expiration);
 
+        if(param_email == null)
+            param_email = "manpreet@bhinder.net";
+
+        if(param_telephone == null)
+            param_telephone = "+6597121419";
+
         generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "email", param_email);
         generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "telephone", param_telephone);
 

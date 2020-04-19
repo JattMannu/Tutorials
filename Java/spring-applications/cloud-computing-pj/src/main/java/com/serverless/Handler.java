@@ -30,7 +30,11 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 		}
 
 
-		LOG.info("keys " + s3.getObject("terraform-20200418031709616800000001","processed/29f7b81e-79b8-4260-8f6a-f2dcce15b8ea.png").getObjectMetadata().getUserMetadata().keySet().stream().reduce((s, s2) -> s = s +" "+ s2).get());
+		Map<String, String> userMetadata = s3.getObject("terraform-20200418031709616800000001", "processed/29f7b81e-79b8-4260-8f6a-f2dcce15b8ea.png").getObjectMetadata().getUserMetadata();
+		LOG.info("keys " + userMetadata.keySet().stream().reduce((s, s2) -> s = s +" "+ s2).get());
+		LOG.info("email " + userMetadata.get("email"));
+		LOG.info("telephone " + userMetadata.get("telephone"));
+
 		Response responseBody = new Response("Go Serverless v1.x! Your function executed successfully!", input);
 		return ApiGatewayResponse.builder()
 				.setStatusCode(200)

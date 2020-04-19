@@ -1,19 +1,19 @@
 package com.serverless;
 
 import com.amazonaws.ClientConfiguration;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.amazonaws.services.lambda.runtime.events.SNSEvent;
-import com.amazonaws.services.lambda.runtime.events.SQSEvent;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bson.BsonArray;
 import org.bson.BsonDocument;
 
 import java.util.HashMap;
@@ -23,11 +23,18 @@ public class SendSMSHandler implements RequestHandler<SNSEvent, String> {
 
     private static final Logger LOG = LogManager.getLogger(SendSMSHandler.class);
 
+    private static final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_SOUTHEAST_1).build();
+
+
     @Override
     public String handleRequest(SNSEvent input, Context context) {
 
         LambdaLogger logger = context.getLogger();
         logger.log("received: " + input);
+
+
+        //LOG.info("email " + userMetadata.get("email"));
+
 
 //        logger.log("Records: " + input.get("Records"));
 //        logger.log("requestParameters: " + input.get("requestParameters"));
@@ -37,11 +44,11 @@ public class SendSMSHandler implements RequestHandler<SNSEvent, String> {
 //        logger.log("Keys: " + input.keySet().stream().reduce((s, s2) -> s = s + " "+s2).get());
 //        BsonArray records = BsonArray.parse(input.get("Records").toString());
 //
-        if(input.getRecords().size() == 0)
+        if (input.getRecords().size() == 0)
             return new ErrorResponse("records size = 0;").toJson();
 
         SNSEvent.SNSRecord snsRecord = input.getRecords().get(0);
-        logger.log("sqsMessage: " +  snsRecord.getSNS().getMessage());
+        logger.log("sqsMessage: " + snsRecord.getSNS().getMessage());
 //        logger.log("sqsMessage.getBody: " +  input.toJson());
         BsonDocument record = BsonDocument.parse(snsRecord.getSNS().getMessage()).getArray("Records").get(0).asDocument();
         logger.log("Records: " + record.toJson());
@@ -51,15 +58,13 @@ public class SendSMSHandler implements RequestHandler<SNSEvent, String> {
         String region = record.getString("awsRegion").getValue();
         String key = record.getDocument("s3").getDocument("object").getString("key").getValue();
 
-        String URL = String.format("https://%s.s3-%s.amazonaws.com/%s", bucket,region, key);
+        String URL = String.format("https://%s.s3-%s.amazonaws.com/%s", bucket, region, key);
         logger.log("URL: " + URL);
 
         //https://terraform-20200418031709616800000001.s3-ap-southeast-1.amazonaws.com/processed/bc25010c-f631-4658-aa8b-501b356125a5.png
         //https://terraform-20200418031709616800000001.s3-ap-southeast-1.amazonaws.com/ap-southeast-1
 
-        //Map<String, String> queryStringParameters = (Map<String, String>) input.get("queryStringParameters");
-
-
+        Map<String, String> userMetadata = s3.getObject(bucket, key).getObjectMetadata().getUserMetadata();
 
         context.getLogger().log("SendSMSHandler triggered");
 
@@ -71,6 +76,11 @@ public class SendSMSHandler implements RequestHandler<SNSEvent, String> {
 
         String message = "Image Processed : " + URL;
         String phoneNumber = "+6597121419";
+
+        if (userMetadata.containsKey("telephone")) {
+            phoneNumber= userMetadata.get("telephone");
+            LOG.info("telephone " + phoneNumber);
+        }
 
         String res;
         try {

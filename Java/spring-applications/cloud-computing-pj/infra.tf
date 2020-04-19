@@ -216,9 +216,14 @@ resource "aws_lambda_permission" "apigw" {
 }
 
 //Used to print out the get_pre_signed_url's link/url
-output "base_url" {
+output "base_url_lambda" {
   value = aws_api_gateway_deployment.deplyoment.invoke_url
 }
+
+output "bucket_arn" {
+  value = aws_s3_bucket.bucket.arn
+}
+
 
 //Used to create S3 Bucket
 resource "aws_s3_bucket" "bucket" {

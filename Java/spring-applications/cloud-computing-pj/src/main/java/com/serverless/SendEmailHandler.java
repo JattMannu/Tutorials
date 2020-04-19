@@ -3,23 +3,44 @@ package com.serverless;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.SNSEvent;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.amazonaws.services.simpleemail.model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bson.BsonDocument;
 
 import java.util.Collections;
 import java.util.Map;
 
-public class SendEmailHandler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
+public class SendEmailHandler implements RequestHandler<SNSEvent, ApiGatewayResponse> {
 
 	private static final Logger LOG = LogManager.getLogger(SendEmailHandler.class);
+	private static final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_SOUTHEAST_1).build();
 
 	@Override
-	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
+	public ApiGatewayResponse handleRequest(SNSEvent input, Context context) {
 		LOG.info("received: {}", input);
 
+		if (input.getRecords().size() == 0)
+			return ApiGatewayResponse.builder()
+					.setStatusCode(303)
+					.setObjectBody("Records size is 0")
+					.build();
+
+
+		SNSEvent.SNSRecord snsRecord = input.getRecords().get(0);
+		BsonDocument record = BsonDocument.parse(snsRecord.getSNS().getMessage()).getArray("Records").get(0).asDocument();
+
+		String bucket = record.getDocument("s3").getDocument("bucket").getString("name").getValue();
+		String region = record.getString("awsRegion").getValue();
+		String key = record.getDocument("s3").getDocument("object").getString("key").getValue();
+
+		String URL = String.format("https://%s.s3-%s.amazonaws.com/%s", bucket, region, key);
+		LOG.info("URL: " + URL);
 		// Replace sender@example.com with your "From" address.
 		// This address must be verified with Amazon SES.
 		final String FROM = "manpreet@bhinder.net";
@@ -34,13 +55,13 @@ public class SendEmailHandler implements RequestHandler<Map<String, Object>, Api
 		//final String CONFIGSET = "ConfigSet";
 
 		// The subject line for the email.
-		final String SUBJECT = "Amazon SES test (AWS SDK for Java)";
+		final String SUBJECT = "Cloud Painter";
 
 		// The HTML body for the email.
-		final String HTMLBODY = "<h1>Amazon SES test (AWS SDK for Java)</h1>"
-				+ "<p>This email was sent with <a href='https://aws.amazon.com/ses/'>"
-				+ "Amazon SES</a> using the <a href='https://aws.amazon.com/sdk-for-java/'>"
-				+ "AWS SDK for Java</a>";
+		final String HTMLBODY = "<h1>Image Processed!</h1>"
+				+ "<p>This email was sent from Cloud Painter."
+				+ "URL to download the image : <a href='"+URL+"'>"
+				+ "Download</a>";
 
 		// The email body for recipients with non-HTML email clients.
 		final String TEXTBODY = "This email was sent through Amazon SES "
@@ -75,10 +96,10 @@ public class SendEmailHandler implements RequestHandler<Map<String, Object>, Api
 		}
 
 
-		Response responseBody = new Response("Go Serverless v1.x! Your function executed successfully!", input);
+//		Response responseBody = new Response("Go Serverless v1.x! Your function executed successfully!", input);
 		return ApiGatewayResponse.builder()
 				.setStatusCode(200)
-				.setObjectBody(responseBody)
+				.setObjectBody("Email Sent")
 				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
 				.build();
 	}
