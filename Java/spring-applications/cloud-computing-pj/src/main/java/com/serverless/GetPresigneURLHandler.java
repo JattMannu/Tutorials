@@ -30,11 +30,13 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
         LOG.info("input: {}", input);
         objectKey = String.format("%s/%s", queryStringParameters.get("folder"), queryStringParameters.get("file"));
 
-        String param_email = queryStringParameters.get("email");
-        String param_telephone = queryStringParameters.get("telephone");
+        String param_email = getParam(queryStringParameters , "email" , "manpreet@bhinder.net");
+        String param_telephone = getParam(queryStringParameters,"telephone","+6597121419");
+        String param_style = getParam(queryStringParameters,"style","1");
+        String param_iter = getParam(queryStringParameters,"iter", "1000");
+
         LOG.info("email: {}", param_email);
         LOG.info("telephone: {}", param_telephone);
-
         LOG.info("objectKey: {}", objectKey);
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(clientRegion)
@@ -53,14 +55,23 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
                         .withMethod(HttpMethod.PUT)
                         .withExpiration(expiration);
 
-        if(param_email == null)
-            param_email = "manpreet@bhinder.net";
+//        if(param_email == null)
+//            param_email = "";
+//
+//        if(param_telephone == null)
+//            param_telephone = "+6597121419";
+//
+//        if(param_style == null)
+//            param_style = "1";
+//
+//        if(param_iter == null)
+//            param_iter = "1000";
 
-        if(param_telephone == null)
-            param_telephone = "+6597121419";
 
         generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "email", param_email);
         generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "telephone", param_telephone);
+        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "style", param_style);
+        generatePresignedUrlRequest.addRequestParameter(Headers.S3_USER_METADATA_PREFIX + "iter", param_iter);
 
         URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
 
@@ -82,6 +93,16 @@ public class GetPresigneURLHandler implements RequestHandler<Map<String, Object>
                 .build();
     }
 
+
+
+    private String getParam(Map<String, String> queryStringParameters, String key, String defaultValue){
+        String result = queryStringParameters.get(key);
+        if (result == null){
+            LOG.info("{} is null, fallback to default {}",key, defaultValue);
+            return defaultValue;
+        }
+        return result;
+    }
 
 }
 

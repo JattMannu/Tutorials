@@ -74,7 +74,7 @@ public class SendSMSHandler implements RequestHandler<SNSEvent, String> {
         SimpleSMS simpleSMS = new SimpleSMS(senderId, smsType);
         context.getLogger().log("SendSMSHandler simpleSMS created");
 
-        String message = "Image Processed : " + URL;
+        String message = "Cloud Photo Stylizer \n\r Image Processed : " + URL;
         String phoneNumber = "+6597121419";
 
         if (userMetadata.containsKey("telephone")) {

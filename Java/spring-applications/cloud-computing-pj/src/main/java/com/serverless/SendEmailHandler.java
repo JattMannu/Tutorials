@@ -43,11 +43,20 @@ public class SendEmailHandler implements RequestHandler<SNSEvent, ApiGatewayResp
 		LOG.info("URL: " + URL);
 		// Replace sender@example.com with your "From" address.
 		// This address must be verified with Amazon SES.
+
+		Map<String, String> userMetadata = s3.getObject(bucket, key).getObjectMetadata().getUserMetadata();
+
 		final String FROM = "manpreet@bhinder.net";
 
 		// Replace recipient@example.com with a "To" address. If your account
 		// is still in the sandbox, this address must be verified.
-		final String TO = "manpreet@bhinder.net";
+		String TO = "manpreet@bhinder.net";
+
+		if (userMetadata.containsKey("email")) {
+			TO= userMetadata.get("email");
+			LOG.info("TO " + TO);
+		}
+
 
 		// The configuration set to use for this email. If you do not want to use a
 		// configuration set, comment the following variable and the
@@ -55,7 +64,7 @@ public class SendEmailHandler implements RequestHandler<SNSEvent, ApiGatewayResp
 		//final String CONFIGSET = "ConfigSet";
 
 		// The subject line for the email.
-		final String SUBJECT = "Cloud Painter";
+		final String SUBJECT = "Cloud Photo Stylizer";
 
 		// The HTML body for the email.
 		final String HTMLBODY = "<h1>Image Processed!</h1>"

@@ -279,6 +279,15 @@ resource "aws_s3_bucket_object" "processed" {
   source = "/dev/null"
 }
 
+//Used to create folder "processed" in the S3 bucket
+resource "aws_s3_bucket_object" "styles" {
+  bucket = aws_s3_bucket.bucket.id
+  acl = "public-read"
+  key = "styles/"
+  source = "/dev/null"
+}
+
+
 //Used to create a SQS and Allow S3 bucket to send message to the Queue
 resource "aws_sqs_queue" "queue" {
   name = "s3-event-notification-queue"
