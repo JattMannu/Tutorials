@@ -21,8 +21,10 @@ public class RegistryHandler {
 
     // Items only
     // ItemGroup.MATERIALS => ores
+//    public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
+//            () -> new ItemBase(new Item.Properties().group(ItemGroup.MATERIALS)));
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
-            () -> new ItemBase(new Item.Properties().group(ItemGroup.MATERIALS)));
+            () -> new ItemBase());
 
 
 }

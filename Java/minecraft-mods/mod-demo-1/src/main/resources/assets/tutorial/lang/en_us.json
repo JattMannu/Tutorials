@@ -1,0 +1,26 @@
+{
+  "item.tutorial.ruby" : "Ruby",
+  "item.tutorial.example_item_1" : "Example Item 1",
+  "item.tutorial.example_item_2" : "Example Item 2",
+  "item.tutorial.wheel" : "Wheel",
+  "item.tutorial.bread" : "My Bread",
+
+
+
+  "item.tutorial.raw_plain_pizza" : "Raw Plain Pizza",
+  "item.tutorial.plain_pizza" : "Plain Pizza",
+  "item.tutorial.fish_pizza" : "Fish Pizza",
+  "item.tutorial.beef_pizza" : "Beef Pizza",
+  "item.tutorial.rabbit_pizza" : "Rabbit Pizza",
+  "item.tutorial.meat_galore_pizza" : "Meat Galore Pizza",
+  "item.tutorial.cod_pizza" : "Cod Pizza",
+  "item.tutorial.carrot_pizza" : "Carrot Pizza",
+  "item.tutorial.curry_pizza" : "Curry Pizza",
+  "item.tutorial.chicken_pizza" : "Chicken Pizza",
+  "item.tutorial.veggie_pizza" : "Veggie Pizza",
+  "item.tutorial.salmon_pizza" : "Salmon Pizza",
+  "item.tutorial.porkchop_pizza" : "Porkchop Pizza",
+  "item.tutorial.mutton_pizza" : "Mutton Pizza",
+
+  "itemGroup.tutorialTab": "Tutorial"
+}
