@@ -1,5 +1,6 @@
 package io.javabrains;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,4 +73,26 @@ public class GreetingController {
         return "Map: "+ this.map;
     }
 
+
+
+
+    // Lesson 6
+    @Autowired
+    private DbSetting dbSetting;
+
+    // curl localhost:8080/db-setting
+    @GetMapping("/db-setting")
+    public String dbSetting() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("dbSetting connection String : "+ dbSetting.getConnectionString());
+        builder.append("\n");
+        builder.append("dbSetting host: "+ dbSetting.getHost());
+        builder.append("\n");
+        builder.append("dbSetting port: "+ dbSetting.getPort());
+        return builder.toString();
+    }
+
+
+
 }
+
