@@ -9,11 +9,11 @@ app:
 
 # Lesson: ConfigurationProperties explained - Microservice configuration with Spring Boot [06]
 db:
-  user: admin
-  pass: admin
+  user: test
+  pass: test
   connectionString: "{connectionString: 'thisIsAConnectionString:132.4.212.12', user: ${db.user}, pass: ${db.pass}}"
-  host: 123.123.123.123
-  port: 1932
+  host: 23.54.198.34
+  port: 2131
 
 # Enable Spring boot's acutators
 management:
@@ -23,7 +23,3 @@ management:
         include: "*"
 # Able to access this:  curl localhost:8080/actuator/configprops |  jq
 
-
-spring:
-  profiles:
-    active: test, test-a
