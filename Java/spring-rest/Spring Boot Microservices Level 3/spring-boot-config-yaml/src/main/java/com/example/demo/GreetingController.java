@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -88,6 +89,19 @@ public class GreetingController {
         builder.append("dbSetting host: "+ dbSetting.getHost());
         builder.append("\n");
         builder.append("dbSetting port: "+ dbSetting.getPort());
+        return builder.toString();
+    }
+
+
+    @Autowired
+    private Environment env; //Not recommended to be used.
+
+    // curl localhost:8080/env-details
+    @GetMapping("/env-details")
+    public String envDetails() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("env : "+ env);
+        builder.append("\n");
         return builder.toString();
     }
 
