@@ -1,0 +1,25 @@
+my:
+  greeting: hello world
+  list.values: one,two,three
+  keyValue: "{name: 'Manpreet', age: 12}"
+
+app:
+  name: My App
+  description: Welcome to ${app.name}
+
+# Lesson: ConfigurationProperties explained - Microservice configuration with Spring Boot [06]
+db:
+  user: admin
+  pass: admin
+  connectionString: "{connectionString: 'thisIsAConnectionString:132.4.212.12', user: ${db.admin}, pass: ${db.pass}}"
+  host: 123.123.123.123
+  port: 1932
+
+# Enable Spring boot's acutators
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# Able to access this:  curl localhost:8080/actuator/configprops |  jq
+
