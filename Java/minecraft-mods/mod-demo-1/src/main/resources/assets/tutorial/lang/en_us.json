@@ -22,5 +22,8 @@
   "item.tutorial.porkchop_pizza" : "Porkchop Pizza",
   "item.tutorial.mutton_pizza" : "Mutton Pizza",
 
+  "block.tutorial.my_block" : "My block",
+
+
   "itemGroup.tutorialTab": "Tutorial"
 }

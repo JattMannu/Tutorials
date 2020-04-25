@@ -52,7 +52,7 @@ public class Items {
             new Item((new Item.Properties()).group(Tutorial.TAB).food(com.example.examplemod.items.Foods.PORKCHOP_PIZZA)));
 
     public static final Item MUTTON_PIZZA = register("mutton_pizza",
-            new Item((new Item.Properties()).group(Tutorial.TAB).food(com.example.examplemod.items.Foods.MUTTON_PIZZA)));
+            new Item(new Item.Properties().group(Tutorial.TAB).food(com.example.examplemod.items.Foods.MUTTON_PIZZA)));
 
 
     private static Item register(String key, Item item) {
