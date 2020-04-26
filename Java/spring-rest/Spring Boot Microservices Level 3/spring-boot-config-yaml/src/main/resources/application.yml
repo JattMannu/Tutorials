@@ -24,6 +24,11 @@ management:
 # Able to access this:  curl localhost:8080/actuator/configprops |  jq
 
 
+#spring:
+#  profiles:
+#    active: test, test-a
+
+spring.cloud.config.uri: http://localhost:8888
 spring:
-  profiles:
-    active: test, test-a
+  application:
+    name: spring-boot-config-yaml

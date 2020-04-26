@@ -31,6 +31,11 @@ http://localhost:8888/<filename_without_ext>/<profile>
 ```
 working:
 ```
+http://localhost:8888/application/default
+//No idea what is this.
 http://localhost:8888/spring-cloud-config-server/application
+```
 
+```
+2020-04-26 16:52:37.434  INFO 36739 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
 ```
