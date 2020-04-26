@@ -1,4 +1,5 @@
 
+https://www.baeldung.com/spring-cloud-configuration
 
 ### Using external property sources with Spring Boot - Microservice configuration with Spring Boot [04]
 
@@ -38,4 +39,21 @@ http://localhost:8888/spring-cloud-config-server/application
 
 ```
 2020-04-26 16:52:37.434  INFO 36739 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
+```
+
+### Dynamic config with spring Boot - Microservice configuration with Spring Boot [13]
+
+You can use actuator to tell the microservice to refresh. 
+
+!!! We only refresh those beans that are marked ```@RefreshScope```
+
+to restart 
+curl --location --request POST 'localhost:8080/actuator/refresh' | jq
+
+response : 
+```json5
+[
+  "config.client.version",
+  "my.greeting"
+]
 ```
