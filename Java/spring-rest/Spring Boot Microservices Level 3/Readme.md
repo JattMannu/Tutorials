@@ -22,3 +22,15 @@ Should print: Hello from command line!%
 
 ### Spring profiles explained - Microservice configuration with Spring Boot [08]
 ```java -jar spring-boot-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=test,test-b```
+
+
+### Set up spring cloud config server from scratch - Microservice configuration with Spring Boot [11]
+
+```
+http://localhost:8888/<filename_without_ext>/<profile>
+```
+working:
+```
+http://localhost:8888/spring-cloud-config-server/application
+
+```
