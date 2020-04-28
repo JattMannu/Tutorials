@@ -1,0 +1,7 @@
+Find who has locked it?
+SELECT * FROM DATABASECHANGELOGLOCK;
+
+Clear the lock.
+UPDATE DATABASECHANGELOGLOCK
+SET locked=false, lockgranted=null, lockedby=null
+WHERE id=1
