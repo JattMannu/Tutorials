@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>kickstarter-2016 Analysis</title>
+	<link rel="stylesheet" href="normalize.css">
+	<style>
+
+	.bar { fill: steelblue; }
+	.bar:hover {
+		fill: orange ;
+	}
+
+	.toolTip {
+		position: absolute;
+		display: none;
+		min-width: 80px;
+		height: auto;
+		background: none repeat scroll 0 0 #ffffff;
+		border: 1px solid #6F257F;
+		padding: 14px;
+		text-align: center;
+	}
+	.legend {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 60%;
+	}
+
+	</style>
+</head>
+<body>
+	<h1>Average amount pledged per project for each category</h1>
+	<div id="chart"></div>
+	<script src="d3.v4.min.js"></script>
+	<script>
+
+	(function(d3) {
+		'use strict';
+
+		//Show the average amount pledged per project for each category.
+
+		d3.csv('kickstarter-2016.csv', function(error, dataset) {
+			dataset.forEach(
+				function(d) {
+					d.percentage = Math.min(d.Pledged/d.Goal*100.0,100);
+				});
+
+				console.log(dataset);
+
+				var test1 = d3.nest()
+				.key(function(d) {return d.Category})
+				.rollup(function(v) {return {
+					//Category: function(d){return d.Category},
+					SuccessRate: 100*d3.sum(v, function(d){return d.Status})/v.length,
+					Popularity: d3.sum(v, function(d){return d.Backers})/v.length,
+					Pledged: d3.sum(v, function(d){return d.Pledged})/v.length,
+					Projects: v.length
+				}})
+				.entries(dataset);
+
+				console.log(test1);
+
+				var test2=[];
+				for (var i=0, len=test1.length; i<len;i++){
+					test2.push({
+						'Category': test1[i].key,
+						'SuccessRate': test1[i].value.SuccessRate,
+						'Popularity': test1[i].value.Popularity,
+						'Pledged': test1[i].value.Pledged,
+						'Projects': test1[i].value.Projects
+					})
+				};
+
+				console.log(test2);
+
+				var formatComma = d3.format(","),
+				formatDecimalComma = d3.format(",.2f");
+
+				test2.sort(function(a, b) {
+					return b.Pledged - a.Pledged;
+				});
+
+				// set the dimensions and margins of the graph
+				var margin = {top: 20, right: 20, bottom: 100, left: 60},
+				width = 960 - margin.left - margin.right,
+				height = 500 - margin.top - margin.bottom;
+
+				// set the ranges
+				var x = d3.scaleBand()
+				.range([0, width])
+				.padding(0.1);
+				var y = d3.scaleLinear()
+				.range([height, 0]);
+
+				// append the svg object to the body of the page
+				// append a 'group' element to 'svg'
+				// moves the 'group' element to the top left margin
+				var svg = d3.select("body").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+				// Scale the range of the data in the domains
+				x.domain(test2.map(function(d) { return d.Category; }));
+				y.domain([0, d3.max(test2, function(d) { return d.Pledged; })]);
+
+				var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+
+				// append the rectangles for the bar chart
+				svg.selectAll(".bar")
+				.data(test2)
+				.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return x(d.Category); })
+				.attr("width", x.bandwidth())
+				.attr("y", function(d) { return y(d.Pledged); })
+				.attr("height", function(d) { return height - y(d.Pledged); })//;
+				.on("mousemove", function(d){
+					tooltip
+					.style("left", d3.event.pageX - 50 + "px")
+					.style("top", d3.event.pageY - 70 + "px")
+					.style("display", "inline-block")
+					.html((d.Category) + "<br>" + "Pledged:$" + (formatDecimalComma(d.Pledged)));
+				})
+				.on("mouseout", function(d){ tooltip.style("display", "none");});
+
+				// add the x Axis
+				svg.append("g")
+				.attr("transform", "translate(0," + height + ")")
+				.call(d3.axisBottom(x))
+				.selectAll("text")
+				.attr("y", 0)
+				.attr("x", 9)
+				.attr("dy", ".35em")
+				.attr("transform", "rotate(90)")
+				.style("text-anchor", "start");
+				;
+
+				// add the y Axis
+				svg.append("g")
+				.call(d3.axisLeft(y));
+
+				var options = d3.keys(test2).filter(function(d) { return d.Pledged; });
+				var color = d3.scaleOrdinal(d3.schemeCategory20b);
+
+				var legend = svg.selectAll(".legend")
+				.data(options.slice())
+				.enter().append("g")
+				.attr("class", "legend")
+				.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+				legend.append("rect")
+				.attr("x", width - 18)
+				.attr("width", 18)
+				.attr("height", 18)
+				.style("fill", color);
+
+				legend.append("text")
+				.attr("x", width - 24)
+				.attr("y", 9)
+				.attr("dy", ".35em")
+				.style("text-anchor", "end")
+				.text(function(d) { return d.Pledged; });
+
+			});
+		}
+
+
+	)(window.d3);
+
+	</script>
+</body>
+</html>

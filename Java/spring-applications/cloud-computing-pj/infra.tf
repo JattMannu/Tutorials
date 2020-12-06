@@ -134,6 +134,11 @@ resource "aws_lambda_function" "send_sms" {
       BUCKET_ARN = aws_s3_bucket.bucket.arn
     }
   }
+
+  depends_on = [
+    aws_iam_role_policy_attachment.lambda_logs,
+    aws_iam_role_policy_attachment.lambda_sms,
+    aws_cloudwatch_log_group.cs5224_send_sms]
 }
 
 resource "aws_lambda_function" "get_pre_signed_url" {
@@ -455,7 +460,7 @@ resource "aws_iam_policy" "lambda_sms" {
     "Statement": [
         {
             "Effect": "Allow",
-            "Action": "sns:Publish",
+            "Action": "sns:*",
             "Resource": "*"
         }
     ]

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>kickstarter-2016 Analysis</title>
+	<link rel="stylesheet" href="normalize.css">
+	<style>
+
+	.bar {
+		fill: steelblue;
+	}
+
+	.axis path {
+		/*display: none;*/
+	}
+	</style>
+
+</head>
+<body>
+	<h1>Average percentage of the goal reached per category</h1>
+	<div id="stackedbars">
+		<svg id="stacked" width="600" height="500"></svg></div>
+		<script src="d3.v4.min.js"></script>
+		<script>
+
+		(function(d3) {
+			'use strict';
+
+			d3.csv('kickstarter-2016.csv', function(error, dataset) {
+				dataset.forEach(
+					function(d) {
+						d.percentage = Math.min(d.Pledged/d.Goal*100.0,100);
+						d.successful = 0;
+						d.canceled = 0;
+						d.suspended = 0;
+						d.failed = 0;
+						d.Status1 = d.Category+d.Status;
+						if (d.Status=="successful")
+						{
+							d.successful = 1;}
+							else if(d.Status=="canceled")
+							{
+								d.canceled = 1;}
+								else if(d.Status=="suspended")
+								{
+									d.suspended = 1;}
+									else if(d.Status=="failed")
+									{
+										d.failed = 1;}
+
+									});
+
+									console.log(dataset);
+
+
+									var test1 = d3.nest()
+									.key(function(d) {return d.Category})
+									.rollup(function(v) {return {
+										successful: d3.sum(v, function(d){return d.successful}),
+										failed: d3.sum(v, function(d){return d.failed}),
+										canceled: d3.sum(v, function(d){return d.canceled}),
+										suspended: d3.sum(v, function(d){return d.suspended})
+									}})
+									.entries(dataset);
+
+									console.log(test1);
+
+									var test2=[];
+									for (var i=0, len=test1.length; i<len;i++){
+										test2.push({
+											'Category': test1[i].key,
+											//'Status': "Successful",
+											//'Status1': test1[i].key + " Successful",
+											'enabled' : true,
+											'PercentageSuccessful': test1[i].value.successful / (test1[i].value.suspended+test1[i].value.failed+test1[i].value.canceled+test1[i].value.successful)*100,
+											'countSuccessful': test1[i].value.successful,
+											'PercentageCanceled': test1[i].value.canceled / (test1[i].value.suspended+test1[i].value.failed+test1[i].value.canceled+test1[i].value.successful)*100,
+											'countCanceled': test1[i].value.canceled,
+											'PercentageFailed': test1[i].value.failed / (test1[i].value.suspended+test1[i].value.failed+test1[i].value.canceled+test1[i].value.successful)*100,
+											'countFailed': test1[i].value.failed,
+											'PercentageSuspended': test1[i].value.suspended / (test1[i].value.suspended+test1[i].value.failed+test1[i].value.canceled+test1[i].value.successful)*100,
+											'countSuspended': test1[i].value.suspended,
+											'total': (test1[i].value.suspended+test1[i].value.failed+test1[i].value.canceled+test1[i].value.successful)
+										})
+
+									};
+
+									console.log(test2);
+
+
+									var svg = d3.select("#stacked"),
+									margin = {top: 20, right: 180, bottom: 100, left: 40},
+									width = +svg.attr("width") - margin.left - margin.right,
+									height = +svg.attr("height") - margin.top - margin.bottom,
+									g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+									var x = d3.scaleBand()
+									.rangeRound([0, width])
+									.padding(0.3)
+									.align(0.3);
+
+									var y = d3.scaleLinear()
+									.rangeRound([height, 0]);
+
+									var z = d3.scaleOrdinal(d3.schemeCategory10).range(["#5e41f4", "#42f448", "#f44141", "#f4cb42", "#f49541"]);
+
+									var stack = d3.stack();
+
+									var formatComma = d3.format(","),
+									formatDecimalComma = d3.format(",.2f");
+
+									d3.csv("Chart2.csv", function(error, data) {
+										if (error) throw error;
+
+										data.sort(function(a, b) { return b.PercentageSuccessful - a.PercentageSuccessful; });
+
+										x.domain(data.map(function(d) { return d.Category; }));
+										y.domain([0, 100]).nice();
+										z.domain(data.columns.slice(1));
+
+										g.selectAll(".serie")
+										.data(stack.keys(data.columns.slice(7))(data))
+										.enter().append("g")
+										.attr("class", "serie")
+										.attr("fill", function(d) { return z(d.key); })
+										.selectAll("rect")
+										.data(function(d) { return d; })
+										.enter().append("rect")
+										.attr("x", function(d) { return x(d.data.Category); })
+										.attr("y", function(d) { return y(d[1]); })
+										.attr("height", function(d) { return y(d[0]) - y(d[1]); })
+										.attr("width", x.bandwidth())
+										.on("mouseover", function() { tooltip.style("display", null); })
+										.on("mouseout", function() { tooltip.style("display", "none"); })
+										.on("mousemove", function(d) {
+											// console.log(d);
+											var xPosition = d3.mouse(this)[0] - 5;
+											var yPosition = d3.mouse(this)[1] - 5;
+											tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+											tooltip.select("text").text(formatDecimalComma(d[1]-d[0])+"%");
+										});
+
+										g.append("g")
+										.attr("class", "axis axis--x")
+										.attr("transform", "translate(0," + height + ")")
+										.call(d3.axisBottom(x))
+										.selectAll("text")
+										.attr("y", 0)
+										.attr("x", 9)
+										.attr("dy", ".35em")
+										.attr("transform", "rotate(90)")
+										.style("text-anchor", "start");
+										;
+										g.append("g")
+										.attr("class", "axis axis--y")
+										.call(d3.axisLeft(y).ticks(10, "s"))
+										.append("text")
+										.attr("x", 2)
+										.attr("y", y(y.ticks(10).pop()))
+										.attr("dy", "0.35em")
+										.attr("text-anchor", "start")
+										.attr("fill", "#000")
+										.text("Percentage");
+
+										var legend = g.selectAll(".legend")
+										.data(data.columns.slice(7).reverse())
+										.enter().append("g")
+										.attr("class", "legend")
+										.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
+										.style("font", "10px sans-serif");
+
+										legend.append("rect")
+										.attr("x", width + 18)
+										.attr("width", 18)
+										.attr("height", 18)
+										.attr("fill", z);
+
+										legend.append("text")
+										.attr("x", width + 44)
+										.attr("y", 9)
+										.attr("dy", ".35em")
+										.attr("text-anchor", "start")
+										.text(function(d) { return d; });
+									});
+
+									var tooltip = svg.append("g")
+									.attr("class", "tooltip")
+									.style("display", "none");
+
+									tooltip.append("rect")
+									.attr("width", 60)
+									.attr("height", 20)
+									.attr("fill", "white")
+									.style("opacity", 0.5);
+
+									tooltip.append("text")
+									.attr("x", 30)
+									.attr("dy", "1.2em")
+									.style("text-anchor", "middle")
+									.attr("font-size", "12px")
+									.attr("font-weight", "bold");
+
+								});
+							}
+
+
+						)(window.d3);
+
+						</script>
+					</body>
+					</html>

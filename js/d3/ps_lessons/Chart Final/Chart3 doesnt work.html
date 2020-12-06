@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>kickstarter-2016 Analysis</title>
+	<link rel="stylesheet" href="normalize.css">
+	<style>
+
+	body { font: 12px Arial;}
+
+	path {
+	    stroke: steelblue;
+	    stroke-width: 2;
+	    fill: none;
+	}
+
+	.axis path,
+	.axis line {
+	    fill: none;
+	    stroke: grey;
+	    stroke-width: 1;
+	    shape-rendering: crispEdges;
+	}
+
+	.legend {
+	    font-size: 16px;
+	    font-weight: bold;
+	    text-anchor: middle;
+	}
+
+	</style>
+
+	</head>
+	<body>
+		<h1>Change in categories over time</h1>
+		<script src="d3.v4.min.js"></script>
+		<script>
+
+		(function(d3) {
+		'use strict';
+
+
+var parseDate = d3.timeFormat("%Y-%m-%d");
+
+		d3.csv('kickstarter-2016.csv', function(error, dataset) {
+		 dataset.forEach(
+			function(d) {
+		d.date = parseDate(new Date(d.Deadline));
+		d.count = 1
+		});
+
+		dataset =dataset.sort(function(y, x){
+		   return d3.descending(x.date, y.date);
+		})
+
+console.log(dataset);
+
+
+var test1 = d3.nest()
+	.key(function(d) { return d.Category; })
+	.key(function(d) {return d.date})
+	.rollup(function(v) {return {
+		count: d3.sum(v, function(d){return d.count})
+	}})
+	.entries(dataset);
+
+console.log(test1);
+
+
+var test2=[];
+var prevcat = "";
+for (var i=0, len=test1.length; i<len;i++){
+	var cnt = 0;
+	for (var j=0, len1=test1[i].values.length; j<len1;j++){
+		cnt = cnt+test1[i].values[j].value.count;
+		test2.push({
+			'symbol': test1[i].key,
+			'date': test1[i].values[j].key,
+			'price': cnt
+		})
+	}
+};
+
+	console.log(test2);
+
+	var data = test2;
+
+
+	// Set the dimensions of the canvas / graph
+	var margin = {top: 30, right: 20, bottom: 70, left: 50},
+	    width = 600 - margin.left - margin.right,
+	    height = 300 - margin.top - margin.bottom;
+
+
+	// Set the ranges
+	var x = d3.scaleTime().range([0, width]);
+	var y = d3.scaleLinear().range([height, 0]);
+
+	// Define the line
+	var priceline = d3.line()
+	    .x(function(d) {
+				return x(d.date); })
+	    .y(function(d) {
+				return y(d.price); });
+
+	// Adds the svg canvas
+	var svg = d3.select("body")
+	    .append("svg")
+	        .attr("width", width + margin.left + margin.right)
+	        .attr("height", height + margin.top + margin.bottom)
+	    .append("g")
+	        .attr("transform",
+	              "translate(" + margin.left + "," + margin.top + ")");
+
+
+	    // Scale the range of the data
+	    x.domain(d3.extent(data, function(d) { return d.date; }));
+	    y.domain([0, d3.max(data, function(d) { return d.price; })]);
+
+	    // Nest the entries by symbol
+	    var dataNest = d3.nest()
+	        .key(function(d) {return d.symbol;})
+	        .entries(data);
+
+console.log(dataNest);
+
+	    // set the colour scale
+	    var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
+			 var   legendSpace = width/dataNest.length; // spacing for the legend
+
+			    // Loop through each symbol / key
+			    dataNest.forEach(function(d,i) {
+
+			        svg.append("path")
+			            .attr("class", "line")
+			            .style("stroke", function() { // Add the colours dynamically
+			                return d.color = color(d.key); })
+			            .attr("d", priceline(d.values));
+
+			        // Add the Legend
+			        svg.append("text")
+			            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+			            .attr("y", height + (margin.bottom/2)+ 5)
+			            .attr("class", "legend")    // style the legend
+			            .style("fill", function() { // Add the colours dynamically
+			                return d.color = color(d.key); })
+			            .text(d.key);
+
+			    });
+
+			  // Add the X Axis
+			  svg.append("g")
+			      .attr("class", "axis")
+			      .attr("transform", "translate(0," + height + ")")
+			      .call(d3.axisBottom(x));
+
+			  // Add the Y Axis
+			  svg.append("g")
+			      .attr("class", "axis")
+			      .call(d3.axisLeft(y));
+
+
+
+
+		});
+	}
+
+
+	)(window.d3);
+
+		</script>
+	</body>
+</html>
